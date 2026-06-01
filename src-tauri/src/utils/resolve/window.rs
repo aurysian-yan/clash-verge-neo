@@ -83,11 +83,22 @@ pub async fn build_new_window() -> Result<WebviewWindow, String> {
         builder = builder.theme(Some(theme));
     }
 
+    #[cfg(target_os = "macos")]
+    {
+        builder = builder
+            .hidden_title(true)
+            .title_bar_style(tauri::TitleBarStyle::Overlay)
+            .traffic_light_position(tauri::LogicalPosition::new(20.0, 52.0))
+            .transparent(true);
+    }
+
     builder = builder.background_color(background_color);
 
     match builder.build() {
         Ok(window) => {
             logging_error!(Type::Window, window.set_background_color(Some(background_color)));
+            #[cfg(target_os = "macos")]
+            crate::utils::macos_window::configure(&window);
             Ok(window)
         }
         Err(e) => Err(e.to_string()),

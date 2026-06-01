@@ -283,6 +283,7 @@ pub fn run() {
             #[cfg(target_os = "macos")]
             if let Some(window) = _app_handle.get_webview_window("main") {
                 let _ = window.set_title("Clash Verge");
+                crate::utils::macos_window::configure(&window);
             }
         }
 
@@ -424,7 +425,14 @@ pub fn run() {
                 event_handlers::handle_window_focus(focused);
             }
             #[cfg(target_os = "macos")]
+            tauri::WindowEvent::Resized(_) => {
+                if let Some(window) = app_handle.get_webview_window("main") {
+                    utils::macos_window::configure(&window);
+                }
+            }
+            #[cfg(target_os = "macos")]
             tauri::WindowEvent::Destroyed => {
+                utils::macos_window::reset();
                 event_handlers::handle_window_destroyed();
             }
             _ => {}

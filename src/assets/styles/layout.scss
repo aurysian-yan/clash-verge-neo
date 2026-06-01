@@ -10,8 +10,10 @@
     display: flex;
     flex: 1; /* Take remaining height */
     overflow: hidden;
+    box-sizing: border-box;
 
     &__left {
+      position: relative;
       flex: 1 0 200px;
       display: flex;
       height: 100%;
@@ -54,6 +56,16 @@
           padding: 2px 4px;
           transform: scale(0.8);
         }
+      }
+
+      > .the-newbtn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 1;
+        border-radius: 8px;
+        padding: 2px 4px;
+        transform: scale(0.8);
       }
 
       .the-menu {
@@ -162,16 +174,82 @@
     }
 
     .layout-content__left {
-      padding-top: 5px;
+      flex: 0 0 236px;
+      width: 236px;
+      height: auto;
+      margin: 8px 0 8px 8px;
+      padding: 12px 8px 8px;
+      align-self: stretch;
+      border: 1px solid var(--divider-color);
+      border-right: 1px solid var(--divider-color);
+      border-radius: 18px;
+      background-color: var(--floating-nav-background);
+      overflow: hidden;
+    }
+
+    .layout-content__left > .MuiBox-root {
+      max-width: calc(100% - 16px);
+    }
+
+    .layout-content__left > .the-newbtn {
+      right: 10px;
+      top: 10px;
+    }
+
+    .layout-content__left .the-menu {
+      padding-top: 34px;
+
+      .MuiListItem-root {
+        max-width: calc(100% - 8px);
+        padding: 4px 0;
+      }
+
+      .MuiListItemButton-root {
+        margin-left: 0;
+        margin-right: 0;
+        min-height: 42px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        background-color: transparent;
+      }
+
+      .MuiListItemButton-root:hover,
+      .MuiListItemButton-root:active {
+        background-color: var(--floating-nav-button-background);
+      }
+
+      .MuiListItemButton-root.Mui-selected,
+      .MuiListItemButton-root.Mui-selected:hover {
+        background-color: var(--floating-nav-button-selected-background);
+      }
+
+      .MuiListItemIcon-root {
+        min-width: 34px;
+        margin-left: 0;
+
+        .MuiSvgIcon-root {
+          font-size: 22px;
+        }
+      }
+
+      .MuiListItemText-root {
+        margin-left: 0;
+        text-align: left;
+
+        .MuiListItemText-primary {
+          letter-spacing: normal;
+        }
+      }
+    }
+
+    .layout-content__right {
+      margin-left: 0;
     }
 
     .layout-content__right .the-content {
-      top: 5px;
-    }
-
-    .layout-content__left .the-newbtn {
-      right: 9px;
-      top: 2px;
+      top: 0;
     }
   }
 }

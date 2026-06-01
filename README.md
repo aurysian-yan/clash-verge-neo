@@ -9,6 +9,10 @@
 A Clash Meta GUI based on <a href="https://github.com/tauri-apps/tauri">Tauri</a>.
 </h3>
 
+<h4 align="center">
+This fork aims to provide a better macOS experience for the project, including but not limited to Liquid Glass design.
+</h3>
+
 <p align="center">
   Languages:
   <a href="./README.md">简体中文</a> ·

@@ -200,6 +200,7 @@ export const useCustomTheme = () => {
     }
 
     const rootEle = document.documentElement
+    const surfaceColor = mode === 'light' ? '#FFFFFF' : '#2A2A2C'
     if (rootEle) {
       const backgroundColor = mode === 'light' ? '#ECECEC' : dt.background_color
       const selectColor = mode === 'light' ? '#f5f5f5' : '#3E3E3E'
@@ -208,6 +209,7 @@ export const useCustomTheme = () => {
         mode === 'light' ? 'rgba(0, 0, 0, 0.06)' : 'rgba(255, 255, 255, 0.06)'
       rootEle.style.setProperty('--divider-color', dividerColor)
       rootEle.style.setProperty('--background-color', backgroundColor)
+      rootEle.style.setProperty('--surface-color', surfaceColor)
       rootEle.style.setProperty('--selection-color', selectColor)
       rootEle.style.setProperty('--scroller-color', scrollColor)
       rootEle.style.setProperty('--primary-main', muiTheme.palette.primary.main)
@@ -216,12 +218,24 @@ export const useCustomTheme = () => {
         alpha(muiTheme.palette.primary.main, 0.1),
       )
       rootEle.style.setProperty(
+        '--floating-nav-background',
+        mode === 'light' ? 'rgba(255, 255, 255, 0.72)' : 'rgba(0, 0, 0, 0.22)',
+      )
+      rootEle.style.setProperty(
+        '--floating-nav-button-background',
+        mode === 'light' ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.07)',
+      )
+      rootEle.style.setProperty(
+        '--floating-nav-button-selected-background',
+        mode === 'light' ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.12)',
+      )
+      rootEle.style.setProperty(
         '--window-border-color',
         mode === 'light' ? '#cccccc' : '#1E1E1E',
       )
       rootEle.style.setProperty(
         '--scrollbar-bg',
-        mode === 'light' ? '#f1f1f1' : '#2E303D',
+        mode === 'light' ? '#f1f1f1' : '#1C1C1E',
       )
       rootEle.style.setProperty(
         '--scrollbar-thumb',
@@ -296,7 +310,7 @@ export const useCustomTheme = () => {
 
         /* 确保模态框和对话框也使用暗色主题 */
         .MuiDialog-paper {
-          background-color: ${mode === 'light' ? '#ffffff' : '#2E303D'} !important;
+          background-color: ${surfaceColor} !important;
         }
 
         /* 移除可能的白色点或线条 */

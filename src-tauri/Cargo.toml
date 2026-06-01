@@ -40,6 +40,7 @@ tauri-plugin-clipboard-manager = { workspace = true }
 tauri = { workspace = true, features = [
   "protocol-asset",
   "devtools",
+  "macos-private-api",
   "tray-icon",
   "image-ico",
   "image-png",
@@ -120,6 +121,11 @@ objc2-foundation = { version = "0.3.2", features = [
 ] }
 objc2-app-kit = { version = "0.3.2", features = [
   "NSAttributedString",
+  "NSWindow",
+  "NSToolbar",
+  "NSSplitViewController",
+  "NSSplitViewItem",
+  "NSViewController",
   "NSStatusItem",
   "NSStatusBarButton",
   "NSButton",

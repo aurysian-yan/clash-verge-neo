@@ -6,5 +6,7 @@
     <array>
         <string>io.github.clash-verge-rev.clash-verge-rev.service</string>
     </array>
+    <key>CFBundleIconName</key>
+    <string>ClashVerge</string>
 </dict>
 </plist>
