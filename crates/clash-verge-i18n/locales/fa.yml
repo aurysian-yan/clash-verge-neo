@@ -22,18 +22,18 @@ notifications:
     body: پروفایل دوباره فعال شد.
   appQuit:
     title: در آستانه خروج
-    body: Clash Verge Tahoe در آستانه خروج است.
+    body: Clash Verge Neo در آستانه خروج است.
   appHidden:
     title: برنامه پنهان شد
-    body: Clash Verge Tahoe در پس‌زمینه در حال اجراست.
+    body: Clash Verge Neo در پس‌زمینه در حال اجراست.
   updateReady:
-    title: Clash Verge Tahoe Update
+    title: Clash Verge Neo Update
     body: A new version (v{version}) has been downloaded and is ready to install.
     installNow: Install Now
     later: Later
 service:
-  adminInstallPrompt: نصب سرویس Clash Verge Tahoe به دسترسی مدیر نیاز دارد.
-  adminUninstallPrompt: حذف سرویس Clash Verge Tahoe به دسترسی مدیر نیاز دارد.
+  adminInstallPrompt: نصب سرویس Clash Verge Neo به دسترسی مدیر نیاز دارد.
+  adminUninstallPrompt: حذف سرویس Clash Verge Neo به دسترسی مدیر نیاز دارد.
 tray:
   dashboard: داشبورد
   ruleMode: حالت قوانین

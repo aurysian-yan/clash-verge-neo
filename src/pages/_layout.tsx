@@ -18,6 +18,7 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import type { CSSProperties } from 'react'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import BlurEffect from 'react-progressive-blur'
 import { Outlet, useLocation, useNavigate } from 'react-router'
 
 import { BaseErrorBoundary } from '@/components/base'
@@ -301,7 +302,11 @@ const Layout = () => {
         <div className="layout-content">
           <div className="layout-content__left">
             <UpdateButton className="the-newbtn" />
-
+            <BlurEffect
+              className="nav__blurEffect"
+              position="top"
+              intensity={50}
+            />
             {menuUnlocked && (
               <Box
                 sx={(theme) => ({

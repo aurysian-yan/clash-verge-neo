@@ -8,7 +8,8 @@
   .layout-content {
     /* New container for the flex layout */
     display: flex;
-    flex: 1; /* Take remaining height */
+    flex: 1;
+    /* Take remaining height */
     overflow: hidden;
     box-sizing: border-box;
 
@@ -58,7 +59,7 @@
         }
       }
 
-      > .the-newbtn {
+      >.the-newbtn {
         position: absolute;
         right: 10px;
         top: 10px;
@@ -84,7 +85,7 @@
       .the-traffic {
         flex: 0 0 60px;
 
-        > div {
+        >div {
           margin: 0 auto;
           padding: 0 10px;
         }
@@ -188,21 +189,38 @@
       font-size: 14px;
     }
 
-    .layout-content__left > .MuiBox-root {
+    .layout-content__left>.MuiBox-root {
       max-width: calc(100% - 16px);
     }
 
-    .layout-content__left > .the-newbtn {
+    .layout-content__left>.the-newbtn {
       right: 10px;
       top: 10px;
     }
 
+    .nav__blurEffect {
+      flex: 0 0 236px;
+      width: 236px;
+      height: 56px;
+      pointer-events: none !important;
+    }
+
     .layout-content__left .the-menu {
-      padding-top: 34px;
+      padding-top: 40px;
+      mask-image: linear-gradient(to bottom, transparent 0, #000 48px, #000 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 48px, #000 100%);
+      mask-position: top;
+      -webkit-mask-position: top;
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
+      mask-mode: alpha;
+      -webkit-mask-mode: alpha;
 
       .MuiListItem-root {
         max-width: calc(100% - 8px);
-        padding: 3px 0;
+        padding: 4px 0;
       }
 
       .MuiListItemButton-root {
@@ -272,7 +290,7 @@
         display: none !important;
       }
 
-      > .MuiBox-root {
+      >.MuiBox-root {
         display: none !important;
       }
 
@@ -285,14 +303,14 @@
         justify-content: center !important;
       }
 
-      .the-logo > div {
+      .the-logo>div {
         width: 100% !important;
         height: 100% !important;
         align-items: center !important;
         justify-content: center !important;
       }
 
-      .the-logo > div > svg:last-child {
+      .the-logo>div>svg:last-child {
         display: none !important;
       }
 
@@ -309,6 +327,7 @@
         overflow-x: hidden;
 
         scrollbar-width: none;
+
         &::-webkit-scrollbar {
           width: 0;
           height: 0;

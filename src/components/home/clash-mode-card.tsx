@@ -1,6 +1,6 @@
 import { Box, Paper, Stack, Typography } from '@mui/material'
 import {
-  FlowArrowIcon,
+  TreeStructureIcon,
   GlobeIcon,
   NavigationArrowIcon,
 } from '@phosphor-icons/react'
@@ -72,7 +72,7 @@ export const ClashModeCard = () => {
   // 模式图标映射
   const modeIcons = useMemo(
     () => ({
-      rule: <FlowArrowIcon size={20} />,
+      rule: <TreeStructureIcon size={20} />,
       global: <GlobeIcon size={20} />,
       direct: <NavigationArrowIcon size={20} />,
     }),

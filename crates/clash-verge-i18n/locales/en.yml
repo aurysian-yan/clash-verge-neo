@@ -22,18 +22,18 @@ notifications:
     body: Profile Reactivated.
   appQuit:
     title: About to Exit
-    body: Clash Verge Tahoe is about to exit.
+    body: Clash Verge Neo is about to exit.
   appHidden:
     title: Application Hidden
-    body: Clash Verge Tahoe is running in the background.
+    body: Clash Verge Neo is running in the background.
   updateReady:
-    title: Clash Verge Tahoe Update
+    title: Clash Verge Neo Update
     body: A new version (v{version}) has been downloaded and is ready to install.
     installNow: Install Now
     later: Later
 service:
-  adminInstallPrompt: Installing the Clash Verge Tahoe service requires administrator privileges.
-  adminUninstallPrompt: Uninstalling the Clash Verge Tahoe service requires administrator privileges.
+  adminInstallPrompt: Installing the Clash Verge Neo service requires administrator privileges.
+  adminUninstallPrompt: Uninstalling the Clash Verge Neo service requires administrator privileges.
 tray:
   dashboard: Dashboard
   ruleMode: Rule Mode

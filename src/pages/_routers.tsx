@@ -1,12 +1,12 @@
 import {
-  ArticleIcon,
+  ScrollIcon,
   DatabaseIcon,
-  GearIcon,
-  GitForkIcon,
+  GearFineIcon,
+  TreeStructureIcon,
   GlobeIcon,
   HouseIcon,
-  LockOpenIcon,
-  WifiHighIcon,
+  WrenchIcon,
+  OptionIcon,
 } from '@phosphor-icons/react'
 import { createBrowserRouter, RouteObject } from 'react-router'
 
@@ -38,7 +38,7 @@ export const navItems = [
   {
     label: 'layout.components.navigation.tabs.proxies',
     path: '/proxies',
-    icon: [<WifiHighIcon key="mui" />, <ProxiesSvg key="svg" />],
+    icon: [<OptionIcon key="mui" />, <ProxiesSvg key="svg" />],
     Component: ProxiesPage,
   },
   {
@@ -56,25 +56,25 @@ export const navItems = [
   {
     label: 'layout.components.navigation.tabs.rules',
     path: '/rules',
-    icon: [<GitForkIcon key="mui" />, <RulesSvg key="svg" />],
+    icon: [<TreeStructureIcon key="mui" />, <RulesSvg key="svg" />],
     Component: RulesPage,
   },
   {
     label: 'layout.components.navigation.tabs.logs',
     path: '/logs',
-    icon: [<ArticleIcon key="mui" />, <LogsSvg key="svg" />],
+    icon: [<ScrollIcon key="mui" />, <LogsSvg key="svg" />],
     Component: () => null /* KeepAlive: real LogsPage rendered in Layout */,
   },
   {
     label: 'layout.components.navigation.tabs.unlock',
     path: '/unlock',
-    icon: [<LockOpenIcon key="mui" />, <UnlockSvg key="svg" />],
+    icon: [<WrenchIcon key="mui" />, <UnlockSvg key="svg" />],
     Component: UnlockPage,
   },
   {
     label: 'layout.components.navigation.tabs.settings',
     path: '/settings',
-    icon: [<GearIcon key="mui" />, <SettingsSvg key="svg" />],
+    icon: [<GearFineIcon key="mui" />, <SettingsSvg key="svg" />],
     Component: SettingsPage,
   },
 ]

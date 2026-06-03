@@ -11,7 +11,7 @@ import {
 import {
   type Icon,
   DesktopIcon,
-  MagnifyingGlassIcon,
+  NetworkIcon,
   QuestionIcon,
 } from '@phosphor-icons/react'
 import { useState, useMemo, memo, FC } from 'react'
@@ -206,7 +206,7 @@ export const ProxyTunCard: FC = () => {
         <TabButton
           isActive={activeTab === 'tun'}
           onClick={() => handleTabChange('tun')}
-          icon={MagnifyingGlassIcon}
+          icon={NetworkIcon}
           label={t('settings.sections.system.toggles.tunMode')}
           hasIndicator={enable_tun_mode && isTunModeAvailable}
         />
@@ -231,8 +231,8 @@ export const ProxyTunCard: FC = () => {
       <Box
         sx={{
           mt: 0,
-          p: 1,
-          bgcolor: alpha(theme.palette.primary.main, 0.04),
+          p: 0,
+          bgcolor: alpha(theme.palette.text.primary, 0.04),
           borderRadius: 2,
         }}
       >

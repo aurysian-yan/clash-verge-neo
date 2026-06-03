@@ -22,18 +22,18 @@ notifications:
     body: Profil diaktifkan kembali.
   appQuit:
     title: Akan Keluar
-    body: Clash Verge Tahoe akan keluar.
+    body: Clash Verge Neo akan keluar.
   appHidden:
     title: Aplikasi Disembunyikan
-    body: Clash Verge Tahoe berjalan di latar belakang.
+    body: Clash Verge Neo berjalan di latar belakang.
   updateReady:
-    title: Clash Verge Tahoe Update
+    title: Clash Verge Neo Update
     body: A new version (v{version}) has been downloaded and is ready to install.
     installNow: Install Now
     later: Later
 service:
-  adminInstallPrompt: Menginstal layanan Clash Verge Tahoe memerlukan hak administrator.
-  adminUninstallPrompt: Menghapus instalasi layanan Clash Verge Tahoe memerlukan hak administrator.
+  adminInstallPrompt: Menginstal layanan Clash Verge Neo memerlukan hak administrator.
+  adminUninstallPrompt: Menghapus instalasi layanan Clash Verge Neo memerlukan hak administrator.
 tray:
   dashboard: Dasbor
   ruleMode: Mode Aturan

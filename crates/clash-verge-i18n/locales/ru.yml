@@ -22,18 +22,18 @@ notifications:
     body: Профиль повторно активирован.
   appQuit:
     title: Скорый выход
-    body: Clash Verge Tahoe скоро завершит работу.
+    body: Clash Verge Neo скоро завершит работу.
   appHidden:
     title: Приложение скрыто
-    body: Clash Verge Tahoe работает в фоновом режиме.
+    body: Clash Verge Neo работает в фоновом режиме.
   updateReady:
-    title: Clash Verge Tahoe Update
+    title: Clash Verge Neo Update
     body: A new version (v{version}) has been downloaded and is ready to install.
     installNow: Install Now
     later: Later
 service:
-  adminInstallPrompt: Для установки службы Clash Verge Tahoe требуются права администратора.
-  adminUninstallPrompt: Для удаления службы Clash Verge Tahoe требуются права администратора.
+  adminInstallPrompt: Для установки службы Clash Verge Neo требуются права администратора.
+  adminUninstallPrompt: Для удаления службы Clash Verge Neo требуются права администратора.
 tray:
   dashboard: Панель
   ruleMode: Режим правил

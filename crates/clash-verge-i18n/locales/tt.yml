@@ -22,18 +22,18 @@ notifications:
     body: Профиль яңадан активлаштырылды.
   appQuit:
     title: Чыгар алдыннан
-    body: Clash Verge Tahoe чыгарга җыена.
+    body: Clash Verge Neo чыгарга җыена.
   appHidden:
     title: Кушымта яшерелде
-    body: Clash Verge Tahoe фон режимында эшли.
+    body: Clash Verge Neo фон режимында эшли.
   updateReady:
-    title: Clash Verge Tahoe Update
+    title: Clash Verge Neo Update
     body: A new version (v{version}) has been downloaded and is ready to install.
     installNow: Install Now
     later: Later
 service:
-  adminInstallPrompt: Clash Verge Tahoe хезмәтен урнаштыру өчен администратор хокуклары кирәк.
-  adminUninstallPrompt: Clash Verge Tahoe хезмәтен бетерү өчен администратор хокуклары кирәк.
+  adminInstallPrompt: Clash Verge Neo хезмәтен урнаштыру өчен администратор хокуклары кирәк.
+  adminUninstallPrompt: Clash Verge Neo хезмәтен бетерү өчен администратор хокуклары кирәк.
 tray:
   dashboard: Идарә панеле
   ruleMode: Кагыйдә режимы

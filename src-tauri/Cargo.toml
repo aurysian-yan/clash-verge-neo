@@ -1,7 +1,7 @@
 [package]
 name = "clash-verge"
 version = "2.5.2"
-description = "Clash Verge Tahoe"
+description = "Clash Verge Neo"
 authors = ["zzzgydi", "Tunglies", "wonfen", "MystiPanda"]
 license = "GPL-3.0-only"
 repository = "https://github.com/clash-verge-rev/clash-verge-rev.git"
