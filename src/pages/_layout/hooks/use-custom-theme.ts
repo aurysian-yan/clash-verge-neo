@@ -233,13 +233,18 @@ export const useCustomTheme = () => {
         '--window-border-color',
         mode === 'light' ? '#cccccc' : '#1E1E1E',
       )
-      rootEle.style.setProperty(
-        '--scrollbar-bg',
-        mode === 'light' ? '#f1f1f1' : '#1C1C1E',
-      )
+      rootEle.style.setProperty('--scrollbar-bg', 'transparent')
       rootEle.style.setProperty(
         '--scrollbar-thumb',
-        mode === 'light' ? '#c1c1c1' : '#555555',
+        mode === 'light'
+          ? 'rgba(60, 60, 67, 0.32)'
+          : 'rgba(235, 235, 245, 0.28)',
+      )
+      rootEle.style.setProperty(
+        '--scrollbar-thumb-hover',
+        mode === 'light'
+          ? 'rgba(60, 60, 67, 0.46)'
+          : 'rgba(235, 235, 245, 0.38)',
       )
       rootEle.style.setProperty(
         '--user-background-image',
@@ -272,18 +277,28 @@ export const useCustomTheme = () => {
       }
       const effectiveInjectedCss = scopedCss ?? setting.css_injection ?? ''
       const globalStyles = `
-        /* 修复滚动条样式 */
+        /* 滚动条样式 */
+        * {
+          scrollbar-color: var(--scrollbar-thumb) transparent;
+          scrollbar-width: thin;
+        }
         ::-webkit-scrollbar {
-          width: 8px;
-          height: 8px;
+          width: 10px;
+          height: 10px;
+          background-color: transparent;
+        }
+        ::-webkit-scrollbar-track {
           background-color: var(--scrollbar-bg);
         }
         ::-webkit-scrollbar-thumb {
           background-color: var(--scrollbar-thumb);
-          border-radius: 4px;
+          background-clip: content-box;
+          border: 3px solid transparent;
+          border-radius: var(--border-radius);
         }
         ::-webkit-scrollbar-thumb:hover {
-          background-color: ${mode === 'light' ? '#a1a1a1' : '#666666'};
+          background-color: var(--scrollbar-thumb-hover);
+          border-width: 2px;
         }
 
         /* 背景图处理 */
