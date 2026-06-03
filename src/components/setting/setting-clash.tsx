@@ -1,5 +1,5 @@
-import { LanRounded, SettingsRounded } from '@mui/icons-material'
 import { MenuItem, Select, TextField, Typography } from '@mui/material'
+import { GearIcon, TreeStructureIcon } from '@phosphor-icons/react'
 import { invoke } from '@tauri-apps/api/core'
 import { useLockFn } from 'ahooks'
 import { useRef, useState } from 'react'
@@ -107,7 +107,7 @@ const SettingClash = ({ onError }: Props) => {
           <TooltipIcon
             title={t('settings.sections.clash.form.tooltips.networkInterface')}
             color={'inherit'}
-            icon={LanRounded}
+            icon={TreeStructureIcon}
             onClick={() => {
               networkRef.current?.open()
             }}
@@ -129,10 +129,7 @@ const SettingClash = ({ onError }: Props) => {
       <SettingItem
         label={t('settings.sections.clash.form.fields.dnsOverwrite')}
         extra={
-          <TooltipIcon
-            icon={SettingsRounded}
-            onClick={() => dnsRef.current?.open()}
-          />
+          <TooltipIcon icon={GearIcon} onClick={() => dnsRef.current?.open()} />
         }
       >
         <Switch
@@ -234,7 +231,7 @@ const SettingClash = ({ onError }: Props) => {
         extra={
           <TooltipIcon
             title={t('settings.sections.externalCors.tooltips.open')}
-            icon={SettingsRounded}
+            icon={GearIcon}
             onClick={(e) => {
               e.stopPropagation()
               corsRef.current?.open()
@@ -255,7 +252,7 @@ const SettingClash = ({ onError }: Props) => {
         label={t('settings.sections.clash.form.fields.clashCore')}
         extra={
           <TooltipIcon
-            icon={SettingsRounded}
+            icon={GearIcon}
             onClick={() => coreRef.current?.open()}
           />
         }

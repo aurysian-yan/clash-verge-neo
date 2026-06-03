@@ -1,10 +1,10 @@
-import {
-  LocationOnOutlined,
-  RefreshOutlined,
-  VisibilityOffOutlined,
-  VisibilityOutlined,
-} from '@mui/icons-material'
 import { Box, Button, IconButton, Skeleton, Typography } from '@mui/material'
+import {
+  ArrowClockwiseIcon,
+  EyeIcon,
+  EyeSlashIcon,
+  MapPinIcon,
+} from '@phosphor-icons/react'
 import { useQuery } from '@tanstack/react-query'
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow'
 import { useEffect } from 'foxact/use-abortable-effect'
@@ -82,12 +82,12 @@ const IPInfoCardContainer = forwardRef<HTMLElement, React.PropsWithChildren>(
     return (
       <EnhancedCard
         title={t('home.components.ipInfo.title')}
-        icon={<LocationOnOutlined />}
+        icon={<MapPinIcon />}
         iconColor="info"
         ref={ref}
         action={
           <IconButton size="small" onClick={() => mutate()}>
-            <RefreshOutlined />
+            <ArrowClockwiseIcon />
           </IconButton>
         }
       >
@@ -344,9 +344,9 @@ export const IpInfoCard = () => {
                   </Typography>
                   <IconButton size="small" onClick={toggleShowIp}>
                     {showIp ? (
-                      <VisibilityOffOutlined fontSize="small" />
+                      <EyeSlashIcon size={20} />
                     ) : (
-                      <VisibilityOutlined fontSize="small" />
+                      <EyeIcon size={20} />
                     )}
                   </IconButton>
                 </Box>

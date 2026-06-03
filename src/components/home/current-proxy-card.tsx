@@ -1,17 +1,3 @@
-/* eslint-disable @eslint-react/set-state-in-effect */
-import {
-  AccessTimeRounded,
-  ChevronRight,
-  NetworkCheckRounded,
-  WifiOff as SignalError,
-  SignalWifi3Bar as SignalGood,
-  SignalWifi2Bar as SignalMedium,
-  SignalWifi0Bar as SignalNone,
-  SignalWifi4Bar as SignalStrong,
-  SignalWifi1Bar as SignalWeak,
-  SortByAlphaRounded,
-  SortRounded,
-} from '@mui/icons-material'
 import {
   Box,
   Button,
@@ -27,6 +13,17 @@ import {
   alpha,
   useTheme,
 } from '@mui/material'
+import {
+  ArrowsDownUpIcon,
+  CaretRightIcon,
+  CellSignalFullIcon,
+  CellSignalLowIcon,
+  CellSignalMediumIcon,
+  CellSignalSlashIcon,
+  ClockIcon,
+  GaugeIcon,
+  SortAscendingIcon,
+} from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -91,20 +88,44 @@ function getSignalIcon(delay: number): {
   color: string
 } {
   if (delay === -2)
-    return { icon: <SignalNone />, text: '测试中', color: 'text.secondary' }
+    return {
+      icon: <CellSignalLowIcon />,
+      text: '测试中',
+      color: 'text.secondary',
+    }
   if (delay === -1)
-    return { icon: <SignalNone />, text: '未测试', color: 'text.secondary' }
+    return {
+      icon: <CellSignalLowIcon />,
+      text: '未测试',
+      color: 'text.secondary',
+    }
   if (delay > 1e5)
-    return { icon: <SignalError />, text: '错误', color: 'error.main' }
+    return { icon: <CellSignalSlashIcon />, text: '错误', color: 'error.main' }
   if (delay === 0 || delay >= 10000)
-    return { icon: <SignalError />, text: '超时', color: 'error.main' }
+    return { icon: <CellSignalSlashIcon />, text: '超时', color: 'error.main' }
   if (delay >= 500)
-    return { icon: <SignalWeak />, text: '延迟较高', color: 'error.main' }
+    return {
+      icon: <CellSignalLowIcon />,
+      text: '延迟较高',
+      color: 'error.main',
+    }
   if (delay >= 300)
-    return { icon: <SignalMedium />, text: '延迟中等', color: 'warning.main' }
+    return {
+      icon: <CellSignalMediumIcon />,
+      text: '延迟中等',
+      color: 'warning.main',
+    }
   if (delay >= 200)
-    return { icon: <SignalGood />, text: '延迟良好', color: 'info.main' }
-  return { icon: <SignalStrong />, text: '延迟极佳', color: 'success.main' }
+    return {
+      icon: <CellSignalMediumIcon />,
+      text: '延迟良好',
+      color: 'info.main',
+    }
+  return {
+    icon: <CellSignalFullIcon />,
+    text: '延迟极佳',
+    color: 'success.main',
+  }
 }
 
 export const CurrentProxyCard = () => {
@@ -550,7 +571,11 @@ export const CurrentProxyCard = () => {
   const signalInfo =
     currentProxy && state.selection.group
       ? getSignalIcon(currentDelay)
-      : { icon: <SignalNone />, text: '未初始化', color: 'text.secondary' }
+      : {
+          icon: <CellSignalSlashIcon />,
+          text: '未初始化',
+          color: 'text.secondary',
+        }
 
   const checkCurrentProxyDelay = useCallback(async () => {
     if (autoCheckInProgressRef.current) return
@@ -845,11 +870,11 @@ export const CurrentProxyCard = () => {
   const getSortIcon = (): React.ReactElement => {
     switch (sortType) {
       case 1:
-        return <AccessTimeRounded fontSize="small" />
+        return <ClockIcon size={20} />
       case 2:
-        return <SortByAlphaRounded fontSize="small" />
+        return <SortAscendingIcon size={20} />
       default:
-        return <SortRounded fontSize="small" />
+        return <ArrowsDownUpIcon size={20} />
     }
   }
 
@@ -879,7 +904,7 @@ export const CurrentProxyCard = () => {
           }
         >
           <Box sx={{ color: signalInfo.color }}>
-            {currentProxy ? signalInfo.icon : <SignalNone color="disabled" />}
+            {currentProxy ? signalInfo.icon : <CellSignalSlashIcon />}
           </Box>
         </Tooltip>
       }
@@ -896,7 +921,7 @@ export const CurrentProxyCard = () => {
                 onClick={handleCheckDelay}
                 disabled={isDirectMode}
               >
-                <NetworkCheckRounded />
+                <GaugeIcon />
               </IconButton>
             </span>
           </Tooltip>
@@ -914,7 +939,7 @@ export const CurrentProxyCard = () => {
             size="small"
             onClick={goToProxies}
             sx={{ borderRadius: 1.5 }}
-            endIcon={<ChevronRight fontSize="small" />}
+            endIcon={<CaretRightIcon size={20} />}
           >
             {t('layout.components.navigation.tabs.proxies')}
           </Button>

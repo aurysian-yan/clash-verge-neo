@@ -1,4 +1,3 @@
-import { ChevronRightRounded } from '@mui/icons-material'
 import {
   Box,
   List,
@@ -8,6 +7,7 @@ import {
   ListSubheader,
 } from '@mui/material'
 import CircularProgress from '@mui/material/CircularProgress'
+import { CaretRightIcon } from '@phosphor-icons/react'
 import React, { ReactNode, useState } from 'react'
 
 import isAsyncFunction from '@/utils/is-async-function'
@@ -55,7 +55,7 @@ export const SettingItem: React.FC<ItemProps> = ({
         {isLoading ? (
           <CircularProgress color="inherit" size={20} />
         ) : (
-          <ChevronRightRounded />
+          <CaretRightIcon />
         )}
       </ListItemButton>
     </ListItem>

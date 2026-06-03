@@ -1,12 +1,4 @@
 import {
-  AccessTimeOutlined,
-  CancelOutlined,
-  CheckCircleOutlined,
-  HelpOutlined,
-  PendingOutlined,
-  RefreshRounded,
-} from '@mui/icons-material'
-import {
   Box,
   Button,
   Card,
@@ -19,6 +11,14 @@ import {
   alpha,
   useTheme,
 } from '@mui/material'
+import {
+  ArrowClockwiseIcon,
+  CheckCircleIcon,
+  ClockIcon,
+  DotsThreeCircleIcon,
+  QuestionIcon,
+  XCircleIcon,
+} from '@phosphor-icons/react'
 import { invoke } from '@tauri-apps/api/core'
 import { useLockFn } from 'ahooks'
 import { useCallback, useEffect, useState } from 'react'
@@ -311,12 +311,12 @@ const UnlockPage = () => {
 
   // 状态图标
   const getStatusIcon = (status: string) => {
-    if (status === 'Pending') return <PendingOutlined />
-    if (status === 'Yes') return <CheckCircleOutlined />
-    if (status === 'No') return <CancelOutlined />
-    if (status === 'Soon') return <AccessTimeOutlined />
-    if (status.includes('Failed')) return <HelpOutlined />
-    return <HelpOutlined />
+    if (status === 'Pending') return <DotsThreeCircleIcon />
+    if (status === 'Yes') return <CheckCircleIcon />
+    if (status === 'No') return <XCircleIcon />
+    if (status === 'Soon') return <ClockIcon />
+    if (status.includes('Failed')) return <QuestionIcon />
+    return <QuestionIcon />
   }
 
   // 边框色
@@ -335,7 +335,10 @@ const UnlockPage = () => {
     <BasePage
       title={t('tests.unlock.page.title')}
       header={
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box
+          className="base-page-header-actions base-page-header-actions--single"
+          sx={{ display: 'flex', alignItems: 'center' }}
+        >
           <Button
             variant="contained"
             size="small"
@@ -345,7 +348,7 @@ const UnlockPage = () => {
               isCheckingAll ? (
                 <CircularProgress size={16} color="inherit" />
               ) : (
-                <RefreshRounded />
+                <ArrowClockwiseIcon />
               )
             }
           >
@@ -424,7 +427,9 @@ const UnlockPage = () => {
                           }}
                           onClick={() => checkSingleMedia(item.name)}
                         >
-                          <RefreshRounded
+                          <Box
+                            component={ArrowClockwiseIcon}
+                            className="MuiSvgIcon-root"
                             sx={{
                               animation: loadingItems.includes(item.name)
                                 ? 'spin 1s linear infinite'

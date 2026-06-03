@@ -1,5 +1,5 @@
-import { InboxRounded } from '@mui/icons-material'
 import { alpha, Box, Typography } from '@mui/material'
+import { TrayIcon } from '@phosphor-icons/react'
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -32,7 +32,11 @@ export const BaseEmpty = ({
         color: alpha(palette.text.secondary, 0.75),
       })}
     >
-      <InboxRounded sx={{ fontSize: '4em' }} />
+      <Box
+        component={TrayIcon}
+        className="MuiSvgIcon-root"
+        sx={{ fontSize: '4em' }}
+      />
       <Typography sx={{ fontSize: '1.25em' }}>{resolvedText}</Typography>
       {extra}
     </Box>

@@ -1,12 +1,6 @@
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import {
-  CheckBoxOutlineBlankRounded,
-  CheckBoxRounded,
-  DragIndicatorRounded,
-  RefreshRounded,
-} from '@mui/icons-material'
-import {
   Box,
   CircularProgress,
   IconButton,
@@ -16,6 +10,12 @@ import {
   MenuItem,
   Typography,
 } from '@mui/material'
+import {
+  ArrowClockwiseIcon,
+  CheckSquareIcon,
+  DotsSixVerticalIcon,
+  SquareIcon,
+} from '@phosphor-icons/react'
 import { listen } from '@tauri-apps/api/event'
 import { open } from '@tauri-apps/plugin-shell'
 import { useLockFn } from 'ahooks'
@@ -749,9 +749,13 @@ export const ProfileItem = (props: Props) => {
                 }}
               >
                 {isSelected ? (
-                  <CheckBoxRounded color="primary" />
+                  <Box
+                    component={CheckSquareIcon}
+                    className="MuiSvgIcon-root"
+                    sx={{ color: 'primary.main' }}
+                  />
                 ) : (
-                  <CheckBoxOutlineBlankRounded />
+                  <SquareIcon />
                 )}
               </IconButton>
             )}
@@ -765,7 +769,9 @@ export const ProfileItem = (props: Props) => {
               {...attributes}
               {...listeners}
             >
-              <DragIndicatorRounded
+              <Box
+                component={DotsSixVerticalIcon}
+                className="MuiSvgIcon-root"
                 sx={[
                   { cursor: 'move', marginLeft: '-6px' },
                   ({ palette: { text } }) => {
@@ -814,7 +820,7 @@ export const ProfileItem = (props: Props) => {
                 onUpdate(1)
               }}
             >
-              <RefreshRounded color="inherit" />
+              <ArrowClockwiseIcon />
             </IconButton>
           )}
         </Box>

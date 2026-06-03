@@ -1,5 +1,9 @@
-import { GitHub, HelpOutlineRounded, Telegram } from '@mui/icons-material'
-import { Box, ButtonGroup, IconButton, Grid } from '@mui/material'
+import { Box, IconButton, Grid } from '@mui/material'
+import {
+  GithubLogoIcon,
+  QuestionIcon,
+  TelegramLogoIcon,
+} from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import { useTranslation } from 'react-i18next'
 
@@ -34,14 +38,17 @@ const SettingPage = () => {
     <BasePage
       title={t('settings.page.title')}
       header={
-        <ButtonGroup variant="contained" aria-label="Basic button group">
+        <Box
+          className="base-page-header-actions"
+          sx={{ display: 'flex', alignItems: 'center' }}
+        >
           <IconButton
             size="medium"
             color="inherit"
             title={t('settings.page.actions.manual')}
             onClick={toGithubDoc}
           >
-            <HelpOutlineRounded fontSize="inherit" />
+            <QuestionIcon size="1em" />
           </IconButton>
           <IconButton
             size="medium"
@@ -49,7 +56,7 @@ const SettingPage = () => {
             title={t('settings.page.actions.telegram')}
             onClick={toTelegramChannel}
           >
-            <Telegram fontSize="inherit" />
+            <TelegramLogoIcon size="1em" />
           </IconButton>
 
           <IconButton
@@ -58,9 +65,9 @@ const SettingPage = () => {
             title={t('settings.page.actions.github')}
             onClick={toGithubRepo}
           >
-            <GitHub fontSize="inherit" />
+            <GithubLogoIcon size="1em" />
           </IconButton>
-        </ButtonGroup>
+        </Box>
       }
     >
       <Grid container spacing={1.5} columns={{ xs: 6, sm: 6, md: 12 }}>

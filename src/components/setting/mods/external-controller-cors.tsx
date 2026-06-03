@@ -1,5 +1,5 @@
-import { Delete as DeleteIcon } from '@mui/icons-material'
 import { Box, Button, Divider, List, ListItem, TextField } from '@mui/material'
+import { TrashIcon } from '@phosphor-icons/react'
 import { useLockFn, useRequest } from 'ahooks'
 import { forwardRef, useImperativeHandle, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -252,7 +252,7 @@ export const HeaderConfiguration = forwardRef<ClashHeaderConfigingRef>(
                     disabled={corsConfig.allowOrigins.length <= 0}
                     sx={deleteButtonStyle}
                   >
-                    <DeleteIcon fontSize="small" />
+                    <TrashIcon size={20} />
                   </Button>
                 </div>
               ))}

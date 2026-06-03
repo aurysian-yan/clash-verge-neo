@@ -1,4 +1,3 @@
-import { EditRounded } from '@mui/icons-material'
 import {
   Autocomplete,
   Box,
@@ -12,6 +11,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
+import { PencilSimpleIcon } from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import {
   forwardRef,
@@ -664,7 +664,7 @@ export const SysproxyViewer = forwardRef<DialogRef>((props, ref) => {
               sx={{ padding: '3px 0' }}
             />
             <Button
-              startIcon={<EditRounded />}
+              startIcon={<PencilSimpleIcon />}
               variant="outlined"
               onClick={openPacEditor}
             >

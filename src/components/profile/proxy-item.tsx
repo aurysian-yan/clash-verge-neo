@@ -1,6 +1,5 @@
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { DeleteForeverRounded, UndoRounded } from '@mui/icons-material'
 import {
   Box,
   IconButton,
@@ -9,6 +8,7 @@ import {
   alpha,
   styled,
 } from '@mui/material'
+import { ArrowCounterClockwiseIcon, TrashIcon } from '@phosphor-icons/react'
 
 interface Props {
   type: 'prepend' | 'original' | 'delete' | 'append'
@@ -94,7 +94,7 @@ export const ProxyItem = (props: Props) => {
         }}
       />
       <IconButton onClick={onDelete}>
-        {type === 'delete' ? <UndoRounded /> : <DeleteForeverRounded />}
+        {type === 'delete' ? <ArrowCounterClockwiseIcon /> : <TrashIcon />}
       </IconButton>
     </ListItem>
   )

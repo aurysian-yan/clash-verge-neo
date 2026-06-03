@@ -1,10 +1,4 @@
 import {
-  CloseFullscreenRounded,
-  ContentPasteRounded,
-  FormatPaintRounded,
-  OpenInFullRounded,
-} from '@mui/icons-material'
-import {
   Button,
   ButtonGroup,
   Dialog,
@@ -13,6 +7,12 @@ import {
   DialogTitle,
   IconButton,
 } from '@mui/material'
+import {
+  ClipboardTextIcon,
+  CornersInIcon,
+  CornersOutIcon,
+  PaintBrushIcon,
+} from '@phosphor-icons/react'
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow'
 import { useLockFn } from 'ahooks'
 import { type ReactNode, useCallback, useEffect, useRef, useState } from 'react'
@@ -268,7 +268,7 @@ export const EditorViewer = ({
               void handlePaste()
             }}
           >
-            <ContentPasteRounded fontSize="inherit" />
+            <ClipboardTextIcon size="1em" />
           </IconButton>
           <IconButton
             size="medium"
@@ -280,7 +280,7 @@ export const EditorViewer = ({
               void handleFormat()
             }}
           >
-            <FormatPaintRounded fontSize="inherit" />
+            <PaintBrushIcon size="1em" />
           </IconButton>
           <IconButton
             size="medium"
@@ -292,7 +292,7 @@ export const EditorViewer = ({
               void handleToggleMaximize()
             }}
           >
-            {isMaximized ? <CloseFullscreenRounded /> : <OpenInFullRounded />}
+            {isMaximized ? <CornersInIcon /> : <CornersOutIcon />}
           </IconButton>
         </ButtonGroup>
       </DialogContent>

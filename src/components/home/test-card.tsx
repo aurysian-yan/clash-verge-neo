@@ -8,8 +8,8 @@ import {
   DragOverlay,
 } from '@dnd-kit/core'
 import { SortableContext } from '@dnd-kit/sortable'
-import { Add, NetworkCheck } from '@mui/icons-material'
 import { Box, IconButton, Tooltip, alpha, styled, Grid } from '@mui/material'
+import { GaugeIcon, PlusIcon } from '@phosphor-icons/react'
 import { emit } from '@tauri-apps/api/event'
 import { nanoid } from 'nanoid'
 import { useEffect, useRef, useMemo, useCallback } from 'react'
@@ -178,17 +178,17 @@ export const TestCard = () => {
   return (
     <EnhancedCard
       title={t('home.components.tests.title')}
-      icon={<NetworkCheck />}
+      icon={<GaugeIcon />}
       action={
         <Box sx={{ display: 'flex', gap: 1 }}>
           <Tooltip title={t('tests.page.actions.testAll')} arrow>
             <IconButton size="small" onClick={handleTestAll}>
-              <NetworkCheck fontSize="small" />
+              <GaugeIcon size={20} />
             </IconButton>
           </Tooltip>
           <Tooltip title={t('tests.modals.test.title.create')} arrow>
             <IconButton size="small" onClick={handleCreateTest}>
-              <Add fontSize="small" />
+              <PlusIcon size={20} />
             </IconButton>
           </Tooltip>
         </Box>

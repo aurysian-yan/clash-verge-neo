@@ -1,9 +1,9 @@
-import {
-  ErrorOutlineRounded,
-  RefreshRounded,
-  BugReportRounded,
-} from '@mui/icons-material'
 import { Box, Typography, Button, Alert, Collapse } from '@mui/material'
+import {
+  ArrowClockwiseIcon,
+  BugIcon,
+  WarningCircleIcon,
+} from '@phosphor-icons/react'
 import React, { Component, ErrorInfo, ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -173,7 +173,11 @@ const TrafficErrorFallback: React.FC<TrafficErrorFallbackProps> = ({
         color: 'error.contrastText',
       }}
     >
-      <ErrorOutlineRounded sx={{ fontSize: 48, mb: 2, color: 'error.main' }} />
+      <Box
+        component={WarningCircleIcon}
+        className="MuiSvgIcon-root"
+        sx={{ fontSize: 48, mb: 2, color: 'error.main' }}
+      />
 
       <Typography variant="h6" gutterBottom>
         {t('shared.feedback.errors.trafficStats')}
@@ -204,7 +208,7 @@ const TrafficErrorFallback: React.FC<TrafficErrorFallbackProps> = ({
           <Button
             variant="contained"
             color="primary"
-            startIcon={<RefreshRounded />}
+            startIcon={<ArrowClockwiseIcon />}
             onClick={onRetry}
             size="small"
           >
@@ -218,7 +222,7 @@ const TrafficErrorFallback: React.FC<TrafficErrorFallbackProps> = ({
 
         <Button
           variant="text"
-          startIcon={<BugReportRounded />}
+          startIcon={<BugIcon />}
           onClick={onToggleDetails}
           size="small"
         >
@@ -303,7 +307,11 @@ export const LightweightTrafficErrorBoundary: React.FC<{
             color: 'error.contrastText',
           }}
         >
-          <ErrorOutlineRounded sx={{ mr: 1, fontSize: 20 }} />
+          <Box
+            component={WarningCircleIcon}
+            className="MuiSvgIcon-root"
+            sx={{ mr: 1, fontSize: 20 }}
+          />
           <Typography variant="caption">Traffic data unavailable</Typography>
         </Box>
       }

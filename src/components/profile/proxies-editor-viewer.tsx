@@ -9,10 +9,6 @@ import {
 } from '@dnd-kit/core'
 import { SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 import {
-  VerticalAlignBottomRounded,
-  VerticalAlignTopRounded,
-} from '@mui/icons-material'
-import {
   Box,
   Button,
   Dialog,
@@ -24,6 +20,7 @@ import {
   TextField,
   styled,
 } from '@mui/material'
+import { ArrowLineDownIcon, ArrowLineUpIcon } from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import yaml from 'js-yaml'
 import {
@@ -431,7 +428,7 @@ export const ProxiesEditorViewer = (props: Props) => {
                 <Button
                   fullWidth
                   variant="contained"
-                  startIcon={<VerticalAlignTopRounded />}
+                  startIcon={<ArrowLineUpIcon />}
                   onClick={() => {
                     handleParseAsync((proxies) => {
                       setPrependSeq((prev) => [...proxies, ...prev])
@@ -445,7 +442,7 @@ export const ProxiesEditorViewer = (props: Props) => {
                 <Button
                   fullWidth
                   variant="contained"
-                  startIcon={<VerticalAlignBottomRounded />}
+                  startIcon={<ArrowLineDownIcon />}
                   onClick={() => {
                     handleParseAsync((proxies) => {
                       setAppendSeq((prev) => [...prev, ...proxies])

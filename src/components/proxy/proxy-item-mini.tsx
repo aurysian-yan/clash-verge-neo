@@ -1,5 +1,5 @@
-import { CheckCircleOutlineRounded } from '@mui/icons-material'
 import { alpha, Box, ListItemButton, styled, Typography } from '@mui/material'
+import { CheckCircleIcon } from '@phosphor-icons/react'
 import { useTranslation } from 'react-i18next'
 
 import { BaseLoading } from '@/components/base'
@@ -202,8 +202,9 @@ export const ProxyItemMini = (props: Props) => {
           delayValue < 0 &&
           selected && (
             // 展示已选择的 icon
-            <CheckCircleOutlineRounded
-              className="the-icon"
+            <Box
+              component={CheckCircleIcon}
+              className="MuiSvgIcon-root the-icon"
               sx={{ fontSize: 16, mr: 0.5, display: 'block' }}
             />
           )}

@@ -1,4 +1,3 @@
-import { RefreshRounded, StorageOutlined } from '@mui/icons-material'
 import {
   Box,
   Button,
@@ -15,6 +14,7 @@ import {
   alpha,
   styled,
 } from '@mui/material'
+import { ArrowClockwiseIcon, DatabaseIcon } from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import dayjs from 'dayjs'
 import { useState } from 'react'
@@ -134,7 +134,7 @@ export const ProviderButton = () => {
       <Button
         variant="outlined"
         size="small"
-        startIcon={<StorageOutlined />}
+        startIcon={<DatabaseIcon />}
         onClick={() => setOpen(true)}
       >
         {t('rules.page.provider.trigger')}
@@ -269,7 +269,7 @@ export const ProviderButton = () => {
                         }}
                         title={t('rules.page.provider.actions.update')}
                       >
-                        <RefreshRounded />
+                        <ArrowClockwiseIcon />
                       </IconButton>
                     </Box>
                   </ListItem>

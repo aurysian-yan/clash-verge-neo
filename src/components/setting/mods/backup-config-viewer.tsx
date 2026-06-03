@@ -1,5 +1,3 @@
-import Visibility from '@mui/icons-material/Visibility'
-import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import {
   TextField,
   Button,
@@ -8,6 +6,7 @@ import {
   IconButton,
   InputAdornment,
 } from '@mui/material'
+import { EyeIcon, EyeSlashIcon } from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import { useState, useRef, memo, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -221,7 +220,7 @@ export const BackupConfigViewer = memo(
                             onClick={handleClickShowPassword}
                             edge="end"
                           >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                            {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
                           </IconButton>
                         </InputAdornment>
                       ),

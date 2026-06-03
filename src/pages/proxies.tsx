@@ -1,5 +1,5 @@
-import { LanOutlined, LanRounded, WarningRounded } from '@mui/icons-material'
 import { Box, Button, ButtonGroup } from '@mui/material'
+import { TreeStructureIcon, WarningIcon } from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import { useCallback, useEffect, useReducer, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -144,7 +144,7 @@ const ProxyPage = () => {
             {t('proxies.page.title.chainMode')}
             <TooltipIcon
               title={chainWarning}
-              icon={WarningRounded}
+              icon={WarningIcon}
               color="warning"
               sx={{ p: 0.25 }}
             />
@@ -155,36 +155,42 @@ const ProxyPage = () => {
       }
       header={
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <ProviderButton />
-
-          <ButtonGroup size="small">
-            {MODES.map((mode) => (
-              <Button
-                key={mode}
-                variant={mode === curMode ? 'contained' : 'outlined'}
-                onClick={() => onChangeMode(mode)}
-                sx={{ textTransform: 'capitalize' }}
-              >
-                {t(`proxies.page.modes.${mode}`)}
-              </Button>
-            ))}
-          </ButtonGroup>
-
-          <Button
-            size="small"
-            variant={isChainMode ? 'contained' : 'outlined'}
-            onClick={onToggleChainMode}
-            sx={{ ml: 1 }}
-            startIcon={
-              isChainMode ? (
-                <LanRounded fontSize="small" />
-              ) : (
-                <LanOutlined fontSize="small" />
-              )
-            }
+          <Box
+            className="base-page-header-actions"
+            sx={{ display: 'flex', alignItems: 'center' }}
           >
-            {t('proxies.page.actions.toggleChain')}
-          </Button>
+            <ProviderButton />
+
+            <ButtonGroup size="small">
+              {MODES.map((mode) => (
+                <Button
+                  key={mode}
+                  className={
+                    mode === curMode ? 'base-page-header-tab-active' : undefined
+                  }
+                  variant={mode === curMode ? 'contained' : 'outlined'}
+                  onClick={() => onChangeMode(mode)}
+                  sx={{ textTransform: 'capitalize' }}
+                >
+                  {t(`proxies.page.modes.${mode}`)}
+                </Button>
+              ))}
+            </ButtonGroup>
+          </Box>
+
+          <Box
+            className="base-page-header-actions base-page-header-actions--single"
+            sx={{ display: 'flex', alignItems: 'center' }}
+          >
+            <Button
+              size="small"
+              variant={isChainMode ? 'contained' : 'outlined'}
+              onClick={onToggleChainMode}
+              startIcon={<TreeStructureIcon size={20} />}
+            >
+              {t('proxies.page.actions.toggleChain')}
+            </Button>
+          </Box>
         </Box>
       }
     >

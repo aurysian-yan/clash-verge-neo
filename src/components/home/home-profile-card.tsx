@@ -1,13 +1,4 @@
 import {
-  CloudUploadOutlined,
-  DnsOutlined,
-  EventOutlined,
-  LaunchOutlined,
-  SpeedOutlined,
-  StorageOutlined,
-  UpdateOutlined,
-} from '@mui/icons-material'
-import {
   Box,
   Button,
   LinearProgress,
@@ -18,6 +9,14 @@ import {
   keyframes,
   useTheme,
 } from '@mui/material'
+import {
+  ArrowSquareOutIcon,
+  CalendarIcon,
+  ClockClockwiseIcon,
+  CloudArrowUpIcon,
+  DatabaseIcon,
+  GaugeIcon,
+} from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import dayjs from 'dayjs'
 import { useCallback, useMemo, useState } from 'react'
@@ -104,7 +103,12 @@ const ProfileDetails = ({
       <Stack spacing={2}>
         {current.url && (
           <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-            <DnsOutlined fontSize="small" color="action" />
+            <Box
+              component={DatabaseIcon}
+              className="MuiSvgIcon-root"
+              sx={{ color: 'action.active' }}
+              size={20}
+            />
             <Typography
               variant="body2"
               color="text.secondary"
@@ -138,8 +142,10 @@ const ProfileDetails = ({
                   >
                     {parseUrl(current.url)}
                   </Typography>
-                  <LaunchOutlined
-                    fontSize="inherit"
+                  <Box
+                    component={ArrowSquareOutIcon}
+                    className="MuiSvgIcon-root"
+                    size="1em"
                     sx={{
                       ml: 0.5,
                       fontSize: '0.8rem',
@@ -171,11 +177,13 @@ const ProfileDetails = ({
 
         {current.updated && (
           <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-            <UpdateOutlined
-              fontSize="small"
-              color="action"
+            <Box
+              component={ClockClockwiseIcon}
+              className="MuiSvgIcon-root"
+              size={20}
               sx={{
                 cursor: 'pointer',
+                color: 'action.active',
                 animation: updating ? `${round} 1.5s linear infinite` : 'none',
               }}
               onClick={onUpdateProfile}
@@ -197,7 +205,12 @@ const ProfileDetails = ({
         {current.extra && (
           <>
             <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-              <SpeedOutlined fontSize="small" color="action" />
+              <Box
+                component={GaugeIcon}
+                className="MuiSvgIcon-root"
+                sx={{ color: 'action.active' }}
+                size={20}
+              />
               <Typography variant="body2" color="text.secondary">
                 {t('shared.labels.usedTotal')}:{' '}
                 <Box component="span" sx={{ fontWeight: 'medium' }}>
@@ -209,7 +222,12 @@ const ProfileDetails = ({
 
             {current.extra.expire > 0 && (
               <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-                <EventOutlined fontSize="small" color="action" />
+                <Box
+                  component={CalendarIcon}
+                  className="MuiSvgIcon-root"
+                  sx={{ color: 'action.active' }}
+                  size={20}
+                />
                 <Typography variant="body2" color="text.secondary">
                   {t('shared.labels.expireTime')}:{' '}
                   <Box component="span" sx={{ fontWeight: 'medium' }}>
@@ -262,7 +280,9 @@ const EmptyProfile = ({ onClick }: { onClick: () => void }) => {
       }}
       onClick={onClick}
     >
-      <CloudUploadOutlined
+      <Box
+        component={CloudArrowUpIcon}
+        className="MuiSvgIcon-root"
         sx={{ fontSize: 60, color: 'primary.main', mb: 2 }}
       />
       <Typography variant="h6" gutterBottom>
@@ -338,8 +358,10 @@ export const HomeProfileCard = ({
         title={current.name}
       >
         <span>{current.name}</span>
-        <LaunchOutlined
-          fontSize="inherit"
+        <Box
+          component={ArrowSquareOutIcon}
+          className="MuiSvgIcon-root"
+          size="1em"
           sx={{
             ml: 0.5,
             fontSize: '0.8rem',
@@ -360,7 +382,7 @@ export const HomeProfileCard = ({
         variant="outlined"
         size="small"
         onClick={goToProfiles}
-        endIcon={<StorageOutlined fontSize="small" />}
+        endIcon={<DatabaseIcon size={20} />}
         sx={{ borderRadius: 1.5 }}
       >
         {t('layout.components.navigation.tabs.profiles')}
@@ -371,7 +393,7 @@ export const HomeProfileCard = ({
   return (
     <EnhancedCard
       title={cardTitle}
-      icon={<CloudUploadOutlined />}
+      icon={<CloudArrowUpIcon />}
       iconColor="info"
       action={cardAction}
     >

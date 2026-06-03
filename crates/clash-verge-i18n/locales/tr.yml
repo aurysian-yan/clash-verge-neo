@@ -22,18 +22,18 @@ notifications:
     body: Profil yeniden etkinleştirildi.
   appQuit:
     title: Çıkış Yapılmak Üzere
-    body: Clash Verge kapanmak üzere.
+    body: Clash Verge Tahoe kapanmak üzere.
   appHidden:
     title: Uygulama Gizlendi
-    body: Clash Verge arka planda çalışıyor.
+    body: Clash Verge Tahoe arka planda çalışıyor.
   updateReady:
-    title: Clash Verge Update
+    title: Clash Verge Tahoe Update
     body: A new version (v{version}) has been downloaded and is ready to install.
     installNow: Install Now
     later: Later
 service:
-  adminInstallPrompt: Clash Verge hizmetini kurmak için yönetici ayrıcalıkları gerekir.
-  adminUninstallPrompt: Clash Verge hizmetini kaldırmak için yönetici ayrıcalıkları gerekir.
+  adminInstallPrompt: Clash Verge Tahoe hizmetini kurmak için yönetici ayrıcalıkları gerekir.
+  adminUninstallPrompt: Clash Verge Tahoe hizmetini kaldırmak için yönetici ayrıcalıkları gerekir.
 tray:
   dashboard: Gösterge Paneli
   ruleMode: Kural Modu

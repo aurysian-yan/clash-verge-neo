@@ -1,5 +1,5 @@
-import { DeveloperBoardOutlined } from '@mui/icons-material'
 import { Divider, Stack, Typography } from '@mui/material'
+import { CpuIcon } from '@phosphor-icons/react'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -96,7 +96,7 @@ export const ClashInfoCard = () => {
   return (
     <EnhancedCard
       title={t('home.components.clashInfo.title')}
-      icon={<DeveloperBoardOutlined />}
+      icon={<CpuIcon />}
       iconColor="warning"
       action={null}
     >

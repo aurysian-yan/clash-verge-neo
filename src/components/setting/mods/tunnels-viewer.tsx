@@ -1,4 +1,3 @@
-import { Delete, ExpandLess, ExpandMore } from '@mui/icons-material'
 import {
   Button,
   Divider,
@@ -11,6 +10,7 @@ import {
   Select,
   MenuItem,
 } from '@mui/material'
+import { CaretDownIcon, CaretUpIcon, TrashIcon } from '@phosphor-icons/react'
 import { forwardRef, useImperativeHandle, useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -234,7 +234,7 @@ export const TunnelsViewer = forwardRef<TunnelsViewerRef>((_, ref) => {
                       color="error"
                       onClick={() => handleDelete(item.index)}
                     >
-                      <Delete fontSize="small" />
+                      <TrashIcon size={20} />
                     </IconButton>
                   }
                 >
@@ -260,7 +260,7 @@ export const TunnelsViewer = forwardRef<TunnelsViewerRef>((_, ref) => {
               'settings.sections.clash.form.fields.tunnels.actions.addNew',
             )}
           />
-          {expanded ? <ExpandLess /> : <ExpandMore />}
+          {expanded ? <CaretUpIcon /> : <CaretDownIcon />}
         </ListItemButton>
         {expanded && (
           <ListItem sx={{ padding: '8px 0' }}>

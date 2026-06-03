@@ -1,12 +1,4 @@
 import {
-  ArrowDownwardRounded,
-  ArrowUpwardRounded,
-  CloudDownloadRounded,
-  CloudUploadRounded,
-  LinkRounded,
-  MemoryRounded,
-} from '@mui/icons-material'
-import {
   Grid,
   PaletteColor,
   Paper,
@@ -14,6 +6,14 @@ import {
   alpha,
   useTheme,
 } from '@mui/material'
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  CloudArrowDownIcon,
+  CloudArrowUpIcon,
+  LinkIcon,
+  MemoryIcon,
+} from '@phosphor-icons/react'
 import { ReactNode, memo, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -216,42 +216,42 @@ export const EnhancedTrafficStats = () => {
   const statCards = useMemo(
     () => [
       {
-        icon: <ArrowUpwardRounded fontSize="small" />,
+        icon: <ArrowUpIcon size={20} />,
         title: t('home.components.traffic.metrics.uploadSpeed'),
         value: parsedData.up,
         unit: `${parsedData.upUnit}/s`,
         color: 'secondary' as const,
       },
       {
-        icon: <ArrowDownwardRounded fontSize="small" />,
+        icon: <ArrowDownIcon size={20} />,
         title: t('home.components.traffic.metrics.downloadSpeed'),
         value: parsedData.down,
         unit: `${parsedData.downUnit}/s`,
         color: 'primary' as const,
       },
       {
-        icon: <LinkRounded fontSize="small" />,
+        icon: <LinkIcon size={20} />,
         title: t('home.components.traffic.metrics.activeConnections'),
         value: parsedData.connectionsCount,
         unit: '',
         color: 'success' as const,
       },
       {
-        icon: <CloudUploadRounded fontSize="small" />,
+        icon: <CloudArrowUpIcon size={20} />,
         title: t('shared.labels.uploaded'),
         value: parsedData.uploadTotal,
         unit: parsedData.uploadTotalUnit,
         color: 'secondary' as const,
       },
       {
-        icon: <CloudDownloadRounded fontSize="small" />,
+        icon: <CloudArrowDownIcon size={20} />,
         title: t('shared.labels.downloaded'),
         value: parsedData.downloadTotal,
         unit: parsedData.downloadTotalUnit,
         color: 'primary' as const,
       },
       {
-        icon: <MemoryRounded fontSize="small" />,
+        icon: <MemoryIcon size={20} />,
         title: t('home.components.traffic.metrics.memoryUsage'),
         value: parsedData.inuse,
         unit: parsedData.inuseUnit,

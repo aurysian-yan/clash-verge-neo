@@ -1,8 +1,4 @@
 import {
-  RestartAltRounded,
-  SwitchAccessShortcutRounded,
-} from '@mui/icons-material'
-import {
   Box,
   Button,
   Chip,
@@ -11,6 +7,7 @@ import {
   ListItemButton,
   ListItemText,
 } from '@mui/material'
+import { ArrowCounterClockwiseIcon, PathIcon } from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import type { Ref } from 'react'
 import { useImperativeHandle, useState } from 'react'
@@ -123,7 +120,7 @@ export function ClashCoreViewer({ ref }: { ref?: Ref<DialogRef> }) {
             <Button
               variant="contained"
               size="small"
-              startIcon={<SwitchAccessShortcutRounded />}
+              startIcon={<PathIcon />}
               loadingPosition="start"
               loading={upgrading}
               disabled={restarting || changingCore !== null}
@@ -135,7 +132,7 @@ export function ClashCoreViewer({ ref }: { ref?: Ref<DialogRef> }) {
             <Button
               variant="contained"
               size="small"
-              startIcon={<RestartAltRounded />}
+              startIcon={<ArrowCounterClockwiseIcon />}
               loadingPosition="start"
               loading={restarting}
               disabled={upgrading}

@@ -9,18 +9,18 @@ import {
   useSensors,
 } from '@dnd-kit/core'
 import { SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
-import {
-  CheckBoxOutlineBlankRounded,
-  CheckBoxRounded,
-  ClearRounded,
-  ContentPasteRounded,
-  DeleteRounded,
-  IndeterminateCheckBoxRounded,
-  LocalFireDepartmentRounded,
-  RefreshRounded,
-  TextSnippetOutlined,
-} from '@mui/icons-material'
 import { Box, Button, Divider, Grid, IconButton, Stack } from '@mui/material'
+import {
+  ArrowClockwiseIcon,
+  CheckSquareIcon,
+  ClipboardTextIcon,
+  FileTextIcon,
+  FireIcon,
+  MinusSquareIcon,
+  SquareIcon,
+  TrashIcon,
+  XIcon,
+} from '@phosphor-icons/react'
 import { useQuery } from '@tanstack/react-query'
 import { TauriEvent } from '@tauri-apps/api/event'
 import { readText } from '@tauri-apps/plugin-clipboard-manager'
@@ -785,105 +785,119 @@ const ProfilePage = () => {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           {!batchMode ? (
             <>
-              {/* Batch mode toggle button */}
-              <IconButton
-                size="small"
-                color="inherit"
-                title={t('profiles.page.batch.title')}
-                onClick={toggleBatchMode}
+              <Box
+                className="base-page-header-actions"
+                sx={{ display: 'flex', alignItems: 'center' }}
               >
-                <CheckBoxOutlineBlankRounded />
-              </IconButton>
-
-              <IconButton
-                size="small"
-                color="inherit"
-                title={t('profiles.page.actions.updateAll')}
-                onClick={onUpdateAll}
-              >
-                <RefreshRounded />
-              </IconButton>
-
-              <IconButton
-                size="small"
-                color="inherit"
-                title={t('profiles.page.actions.viewRuntimeConfig')}
-                onClick={() => configRef.current?.open()}
-              >
-                <TextSnippetOutlined />
-              </IconButton>
-
-              <IconButton
-                size="small"
-                color="primary"
-                title={t('profiles.page.actions.reactivate')}
-                onClick={() => onEnhance(true)}
-              >
-                <LocalFireDepartmentRounded />
-              </IconButton>
-
-              {/* 故障检测和紧急恢复按钮 */}
-              {(error || isStale) && (
                 <IconButton
                   size="small"
-                  color="warning"
-                  title="数据异常，点击强制刷新"
-                  onClick={onEmergencyRefresh}
-                  sx={{
-                    animation: 'pulse 2s infinite',
-                    '@keyframes pulse': {
-                      '0%': { opacity: 1 },
-                      '50%': { opacity: 0.5 },
-                      '100%': { opacity: 1 },
-                    },
-                  }}
+                  color="inherit"
+                  title={t('profiles.page.batch.title')}
+                  onClick={toggleBatchMode}
                 >
-                  <ClearRounded />
+                  <SquareIcon />
                 </IconButton>
-              )}
+
+                <IconButton
+                  size="small"
+                  color="inherit"
+                  title={t('profiles.page.actions.updateAll')}
+                  onClick={onUpdateAll}
+                >
+                  <ArrowClockwiseIcon />
+                </IconButton>
+
+                <IconButton
+                  size="small"
+                  color="inherit"
+                  title={t('profiles.page.actions.viewRuntimeConfig')}
+                  onClick={() => configRef.current?.open()}
+                >
+                  <FileTextIcon />
+                </IconButton>
+
+                {(error || isStale) && (
+                  <IconButton
+                    size="small"
+                    color="warning"
+                    title="数据异常，点击强制刷新"
+                    onClick={onEmergencyRefresh}
+                    sx={{
+                      animation: 'pulse 2s infinite',
+                      '@keyframes pulse': {
+                        '0%': { opacity: 1 },
+                        '50%': { opacity: 0.5 },
+                        '100%': { opacity: 1 },
+                      },
+                    }}
+                  >
+                    <XIcon />
+                  </IconButton>
+                )}
+              </Box>
+
+              <Box
+                className="base-page-header-actions base-page-header-actions--single"
+                sx={{ display: 'flex', alignItems: 'center' }}
+              >
+                <IconButton
+                  size="small"
+                  color="primary"
+                  title={t('profiles.page.actions.reactivate')}
+                  onClick={() => onEnhance(true)}
+                >
+                  <FireIcon />
+                </IconButton>
+              </Box>
             </>
           ) : (
-            // Batch mode header
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <IconButton
-                size="small"
-                color="inherit"
-                title={
-                  isAllSelected()
-                    ? t('profiles.page.batch.actions.deselectAll')
-                    : t('profiles.page.batch.actions.selectAll')
-                }
-                onClick={
-                  isAllSelected() ? clearAllSelections : selectAllProfiles
-                }
-              >
-                {getSelectionState() === 'all' ? (
-                  <CheckBoxRounded />
-                ) : getSelectionState() === 'partial' ? (
-                  <IndeterminateCheckBoxRounded />
-                ) : (
-                  <CheckBoxOutlineBlankRounded />
-                )}
-              </IconButton>
-              <IconButton
-                size="small"
-                color="error"
-                title={t('profiles.page.batch.actions.delete')}
-                onClick={deleteSelectedProfiles}
-                disabled={selectedProfiles.size === 0}
-              >
-                <DeleteRounded />
-              </IconButton>
-              <Button size="small" variant="outlined" onClick={toggleBatchMode}>
-                {t('profiles.page.batch.actions.done')}
-              </Button>
+            <>
               <Box
-                sx={{ flex: 1, textAlign: 'right', color: 'text.secondary' }}
+                className="base-page-header-actions"
+                sx={{ display: 'flex', alignItems: 'center' }}
               >
+                <IconButton
+                  size="small"
+                  color="inherit"
+                  title={
+                    isAllSelected()
+                      ? t('profiles.page.batch.actions.deselectAll')
+                      : t('profiles.page.batch.actions.selectAll')
+                  }
+                  onClick={
+                    isAllSelected() ? clearAllSelections : selectAllProfiles
+                  }
+                >
+                  {getSelectionState() === 'all' ? (
+                    <CheckSquareIcon />
+                  ) : getSelectionState() === 'partial' ? (
+                    <MinusSquareIcon />
+                  ) : (
+                    <SquareIcon />
+                  )}
+                </IconButton>
+                <IconButton
+                  size="small"
+                  color="error"
+                  title={t('profiles.page.batch.actions.delete')}
+                  onClick={deleteSelectedProfiles}
+                  disabled={selectedProfiles.size === 0}
+                >
+                  <TrashIcon />
+                </IconButton>
+                <Button
+                  size="small"
+                  variant="outlined"
+                  onClick={toggleBatchMode}
+                >
+                  {t('profiles.page.batch.actions.done')}
+                </Button>
+              </Box>
+              <Box sx={{ color: 'text.secondary' }}>
                 {t('profiles.page.batch.summary.selected')}{' '}
                 {selectedProfiles.size} {t('profiles.page.batch.summary.items')}
               </Box>
-            </Box>
+            </>
           )}
         </Box>
       }
@@ -925,7 +939,7 @@ const ProfilePage = () => {
                   title={t('profiles.page.importForm.actions.paste')}
                   onClick={onCopyLink}
                 >
-                  <ContentPasteRounded fontSize="inherit" />
+                  <ClipboardTextIcon size="1em" />
                 </IconButton>
               ) : (
                 <IconButton
@@ -934,7 +948,7 @@ const ProfilePage = () => {
                   title={t('shared.actions.clear')}
                   onClick={() => setUrl('')}
                 >
-                  <ClearRounded fontSize="inherit" />
+                  <XIcon size="1em" />
                 </IconButton>
               ),
             },

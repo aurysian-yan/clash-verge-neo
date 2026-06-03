@@ -1,5 +1,10 @@
-import { Close, CropSquare, FilterNone, Minimize } from '@mui/icons-material'
 import { Box, IconButton } from '@mui/material'
+import {
+  CopySimpleIcon,
+  MinusIcon,
+  SquareIcon,
+  XIcon,
+} from '@phosphor-icons/react'
 import { forwardRef, useImperativeHandle } from 'react'
 
 import { useWindowControls } from '@/hooks/use-window'
@@ -54,10 +59,10 @@ export const WindowControls = forwardRef(function WindowControls(props, ref) {
         <>
           {/* macOS 风格：关闭 → 最小化 → 全屏 */}
           <IconButton size="small" sx={{ fontSize: 14 }} onClick={close}>
-            <Close fontSize="inherit" color="inherit" />
+            <XIcon size="1em" color="inherit" />
           </IconButton>
           <IconButton size="small" sx={{ fontSize: 14 }} onClick={minimize}>
-            <Minimize fontSize="inherit" color="inherit" />
+            <MinusIcon size="1em" color="inherit" />
           </IconButton>
           <IconButton
             size="small"
@@ -65,9 +70,9 @@ export const WindowControls = forwardRef(function WindowControls(props, ref) {
             onClick={toggleMaximize}
           >
             {maximized ? (
-              <FilterNone fontSize="inherit" color="inherit" />
+              <CopySimpleIcon size="1em" color="inherit" />
             ) : (
-              <CropSquare fontSize="inherit" color="inherit" />
+              <SquareIcon size="1em" color="inherit" />
             )}
           </IconButton>
         </>
@@ -77,7 +82,7 @@ export const WindowControls = forwardRef(function WindowControls(props, ref) {
         <>
           {/* Windows 风格：最小化 → 最大化 → 关闭 */}
           <IconButton size="small" sx={{ fontSize: 16 }} onClick={minimize}>
-            <Minimize fontSize="inherit" color="inherit" />
+            <MinusIcon size="1em" color="inherit" />
           </IconButton>
           <IconButton
             size="small"
@@ -85,9 +90,9 @@ export const WindowControls = forwardRef(function WindowControls(props, ref) {
             onClick={toggleMaximize}
           >
             {maximized ? (
-              <FilterNone fontSize="inherit" color="inherit" />
+              <CopySimpleIcon size="1em" color="inherit" />
             ) : (
-              <CropSquare fontSize="inherit" color="inherit" />
+              <SquareIcon size="1em" color="inherit" />
             )}
           </IconButton>
           <IconButton
@@ -95,7 +100,7 @@ export const WindowControls = forwardRef(function WindowControls(props, ref) {
             sx={{ fontSize: 16, ':hover': { bgcolor: 'red', color: 'white' } }}
             onClick={close}
           >
-            <Close fontSize="inherit" color="inherit" />
+            <XIcon size="1em" color="inherit" />
           </IconButton>
         </>
       )}
@@ -104,7 +109,7 @@ export const WindowControls = forwardRef(function WindowControls(props, ref) {
         <>
           {/* Linux 桌面常见布局（GNOME/KDE 多为：最小化 → 最大化 → 关闭） */}
           <IconButton size="small" sx={{ fontSize: 16 }} onClick={minimize}>
-            <Minimize fontSize="inherit" color="inherit" />
+            <MinusIcon size="1em" color="inherit" />
           </IconButton>
           <IconButton
             size="small"
@@ -112,9 +117,9 @@ export const WindowControls = forwardRef(function WindowControls(props, ref) {
             onClick={toggleMaximize}
           >
             {maximized ? (
-              <FilterNone fontSize="inherit" color="inherit" />
+              <CopySimpleIcon size="1em" color="inherit" />
             ) : (
-              <CropSquare fontSize="inherit" color="inherit" />
+              <SquareIcon size="1em" color="inherit" />
             )}
           </IconButton>
           <IconButton
@@ -122,7 +127,7 @@ export const WindowControls = forwardRef(function WindowControls(props, ref) {
             sx={{ fontSize: 16, ':hover': { bgcolor: 'red', color: 'white' } }}
             onClick={close}
           >
-            <Close fontSize="inherit" color="inherit" />
+            <XIcon size="1em" color="inherit" />
           </IconButton>
         </>
       )}

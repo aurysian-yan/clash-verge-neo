@@ -1,17 +1,17 @@
-import {
-  AccessTimeRounded,
-  MyLocationRounded,
-  NetworkCheckRounded,
-  FilterAltRounded,
-  FilterAltOffRounded,
-  VisibilityRounded,
-  VisibilityOffRounded,
-  WifiTetheringRounded,
-  WifiTetheringOffRounded,
-  SortByAlphaRounded,
-  SortRounded,
-} from '@mui/icons-material'
 import { Box, IconButton, TextField, SxProps } from '@mui/material'
+import {
+  ArrowsDownUpIcon,
+  BroadcastIcon,
+  ClockIcon,
+  CrosshairIcon,
+  EyeIcon,
+  EyeSlashIcon,
+  FunnelIcon,
+  FunnelXIcon,
+  GaugeIcon,
+  SortAscendingIcon,
+  WifiSlashIcon,
+} from '@phosphor-icons/react'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -81,7 +81,7 @@ export const ProxyHead = ({
         title={t('proxies.page.tooltips.locate')}
         onClick={onLocation}
       >
-        <MyLocationRounded />
+        <CrosshairIcon />
       </IconButton>
 
       <IconButton
@@ -98,7 +98,7 @@ export const ProxyHead = ({
           onCheckDelay()
         }}
       >
-        <NetworkCheckRounded />
+        <GaugeIcon />
       </IconButton>
 
       <IconButton
@@ -115,9 +115,9 @@ export const ProxyHead = ({
           onHeadState({ sortType: ((sortType + 1) % 3) as ProxySortType })
         }
       >
-        {sortType !== 1 && sortType !== 2 && <SortRounded />}
-        {sortType === 1 && <AccessTimeRounded />}
-        {sortType === 2 && <SortByAlphaRounded />}
+        {sortType !== 1 && sortType !== 2 && <ArrowsDownUpIcon />}
+        {sortType === 1 && <ClockIcon />}
+        {sortType === 2 && <SortAscendingIcon />}
       </IconButton>
 
       <IconButton
@@ -128,11 +128,7 @@ export const ProxyHead = ({
           onHeadState({ textState: textState === 'url' ? null : 'url' })
         }
       >
-        {textState === 'url' ? (
-          <WifiTetheringRounded />
-        ) : (
-          <WifiTetheringOffRounded />
-        )}
+        {textState === 'url' ? <BroadcastIcon /> : <WifiSlashIcon />}
       </IconButton>
 
       <IconButton
@@ -145,7 +141,7 @@ export const ProxyHead = ({
         }
         onClick={() => onHeadState({ showType: !showType })}
       >
-        {showType ? <VisibilityRounded /> : <VisibilityOffRounded />}
+        {showType ? <EyeIcon /> : <EyeSlashIcon />}
       </IconButton>
 
       <IconButton
@@ -156,11 +152,7 @@ export const ProxyHead = ({
           onHeadState({ textState: textState === 'filter' ? null : 'filter' })
         }
       >
-        {textState === 'filter' ? (
-          <FilterAltRounded />
-        ) : (
-          <FilterAltOffRounded />
-        )}
+        {textState === 'filter' ? <FunnelIcon /> : <FunnelXIcon />}
       </IconButton>
 
       {textState === 'filter' && (

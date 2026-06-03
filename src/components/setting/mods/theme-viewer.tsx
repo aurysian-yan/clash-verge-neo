@@ -1,4 +1,3 @@
-import { EditRounded } from '@mui/icons-material'
 import {
   Button,
   List,
@@ -8,6 +7,7 @@ import {
   TextField,
   useTheme,
 } from '@mui/material'
+import { PencilSimpleIcon } from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import {
   useEffect,
@@ -172,7 +172,7 @@ export function ThemeViewer(props: { ref?: React.Ref<DialogRef> }) {
             primary={t('settings.components.verge.theme.fields.cssInjection')}
           />
           <Button
-            startIcon={<EditRounded />}
+            startIcon={<PencilSimpleIcon />}
             variant="outlined"
             onClick={openCssEditor}
           >

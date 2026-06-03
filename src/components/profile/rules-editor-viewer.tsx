@@ -9,10 +9,6 @@ import {
 } from '@dnd-kit/core'
 import { SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 import {
-  VerticalAlignBottomRounded,
-  VerticalAlignTopRounded,
-} from '@mui/icons-material'
-import {
   Autocomplete,
   Box,
   Button,
@@ -26,6 +22,7 @@ import {
   TextField,
   styled,
 } from '@mui/material'
+import { ArrowLineDownIcon, ArrowLineUpIcon } from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import yaml from 'js-yaml'
 import {
@@ -730,7 +727,7 @@ export const RulesEditorViewer = (props: Props) => {
                 <Button
                   fullWidth
                   variant="contained"
-                  startIcon={<VerticalAlignTopRounded />}
+                  startIcon={<ArrowLineUpIcon />}
                   onClick={() => {
                     try {
                       const raw = validateRule()
@@ -748,7 +745,7 @@ export const RulesEditorViewer = (props: Props) => {
                 <Button
                   fullWidth
                   variant="contained"
-                  startIcon={<VerticalAlignBottomRounded />}
+                  startIcon={<ArrowLineDownIcon />}
                   onClick={() => {
                     try {
                       const raw = validateRule()

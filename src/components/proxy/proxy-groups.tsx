@@ -1,4 +1,3 @@
-import { ExpandMoreRounded } from '@mui/icons-material'
 import {
   Alert,
   Box,
@@ -10,6 +9,7 @@ import {
   Typography,
 } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { CaretDownIcon } from '@phosphor-icons/react'
 import { useQuery } from '@tanstack/react-query'
 import { defaultRangeExtractor, useVirtualizer } from '@tanstack/react-virtual'
 import { useLockFn } from 'ahooks'
@@ -680,7 +680,7 @@ function ChainRuleHeader({
             <Typography variant="body2" sx={{ mr: 0.5, fontSize: '12px' }}>
               {selectLabel}
             </Typography>
-            <ExpandMoreRounded fontSize="small" />
+            <CaretDownIcon size={20} />
           </IconButton>
         )}
       </Box>

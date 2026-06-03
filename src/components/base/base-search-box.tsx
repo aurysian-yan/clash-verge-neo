@@ -1,6 +1,6 @@
-import { ClearRounded } from '@mui/icons-material'
 import { Box, SvgIcon, TextField, styled, IconButton } from '@mui/material'
 import Tooltip from '@mui/material/Tooltip'
+import { XIcon } from '@phosphor-icons/react'
 import {
   ChangeEvent,
   useCallback,
@@ -213,7 +213,7 @@ export const BaseSearchBox = ({
                       {...iconStyle}
                       onClick={handleClearInput}
                     >
-                      <ClearRounded fontSize="inherit" />
+                      <XIcon size="1em" />
                     </IconButton>
                   </Tooltip>
                 )}

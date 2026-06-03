@@ -1,4 +1,3 @@
-import { Shuffle } from '@mui/icons-material'
 import {
   CircularProgress,
   IconButton,
@@ -8,6 +7,7 @@ import {
   Stack,
   TextField,
 } from '@mui/material'
+import { ShuffleIcon } from '@phosphor-icons/react'
 import { useLockFn, useRequest } from 'ahooks'
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -256,7 +256,7 @@ export const ClashPortViewer = forwardRef<ClashPortViewerRef>((_, ref) => {
               title={t('settings.modals.clashPort.actions.random')}
               sx={{ mr: 0.5 }}
             >
-              <Shuffle fontSize="small" />
+              <ShuffleIcon size={20} />
             </IconButton>
             <Switch
               size="small"
@@ -290,7 +290,7 @@ export const ClashPortViewer = forwardRef<ClashPortViewerRef>((_, ref) => {
               disabled={!socksEnabled}
               sx={{ mr: 0.5 }}
             >
-              <Shuffle fontSize="small" />
+              <ShuffleIcon size={20} />
             </IconButton>
             <Switch
               size="small"
@@ -324,7 +324,7 @@ export const ClashPortViewer = forwardRef<ClashPortViewerRef>((_, ref) => {
               disabled={!httpEnabled}
               sx={{ mr: 0.5 }}
             >
-              <Shuffle fontSize="small" />
+              <ShuffleIcon size={20} />
             </IconButton>
             <Switch
               size="small"
@@ -359,7 +359,7 @@ export const ClashPortViewer = forwardRef<ClashPortViewerRef>((_, ref) => {
                 disabled={!redirEnabled}
                 sx={{ mr: 0.5 }}
               >
-                <Shuffle fontSize="small" />
+                <ShuffleIcon size={20} />
               </IconButton>
               <Switch
                 size="small"
@@ -395,7 +395,7 @@ export const ClashPortViewer = forwardRef<ClashPortViewerRef>((_, ref) => {
                 disabled={!tproxyEnabled}
                 sx={{ mr: 0.5 }}
               >
-                <Shuffle fontSize="small" />
+                <ShuffleIcon size={20} />
               </IconButton>
               <Switch
                 size="small"

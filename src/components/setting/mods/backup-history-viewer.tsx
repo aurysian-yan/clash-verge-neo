@@ -1,7 +1,3 @@
-import DeleteOutlined from '@mui/icons-material/DeleteOutlined'
-import DownloadRounded from '@mui/icons-material/DownloadRounded'
-import RefreshRounded from '@mui/icons-material/RefreshRounded'
-import RestoreRounded from '@mui/icons-material/RestoreRounded'
 import {
   Box,
   Button,
@@ -15,6 +11,12 @@ import {
   Tabs,
   Typography,
 } from '@mui/material'
+import {
+  ArrowClockwiseIcon,
+  ClockCounterClockwiseIcon,
+  DownloadSimpleIcon,
+  TrashIcon,
+} from '@phosphor-icons/react'
 import { save } from '@tauri-apps/plugin-dialog'
 import { useLockFn } from 'ahooks'
 import dayjs from 'dayjs'
@@ -334,7 +336,7 @@ export const BackupHistoryViewer = ({
               />
             </Tabs>
             <IconButton size="small" onClick={handleRefresh} disabled={isBusy}>
-              <RefreshRounded fontSize="small" />
+              <ArrowClockwiseIcon size={20} />
             </IconButton>
           </Stack>
           <Typography variant="body2" color="text.secondary">
@@ -390,7 +392,7 @@ export const BackupHistoryViewer = ({
                               disabled={isBusy}
                               onClick={() => handleExport(row.filename)}
                             >
-                              <DownloadRounded fontSize="small" />
+                              <DownloadSimpleIcon size={20} />
                             </IconButton>
                           )}
                           <IconButton
@@ -398,14 +400,14 @@ export const BackupHistoryViewer = ({
                             disabled={isBusy}
                             onClick={() => handleDelete(row.filename)}
                           >
-                            <DeleteOutlined fontSize="small" />
+                            <TrashIcon size={20} />
                           </IconButton>
                           <IconButton
                             size="small"
                             disabled={isBusy}
                             onClick={() => handleRestore(row.filename)}
                           >
-                            <RestoreRounded fontSize="small" />
+                            <ClockCounterClockwiseIcon size={20} />
                           </IconButton>
                         </Stack>
                       </Stack>

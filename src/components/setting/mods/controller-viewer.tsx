@@ -1,4 +1,3 @@
-import { ContentCopy } from '@mui/icons-material'
 import {
   Alert,
   Box,
@@ -11,6 +10,7 @@ import {
   TextField,
   Tooltip,
 } from '@mui/material'
+import { CopyIcon } from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import { useImperativeHandle, useState, type Ref } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -177,7 +177,7 @@ export function ControllerViewer({ ref }: { ref?: Ref<DialogRef> }) {
                 color="primary"
                 disabled={isSaving || !enableController}
               >
-                <ContentCopy fontSize="small" />
+                <CopyIcon size={20} />
               </IconButton>
             </Tooltip>
           </Box>
@@ -217,7 +217,7 @@ export function ControllerViewer({ ref }: { ref?: Ref<DialogRef> }) {
                 color="primary"
                 disabled={isSaving || !enableController}
               >
-                <ContentCopy fontSize="small" />
+                <CopyIcon size={20} />
               </IconButton>
             </Tooltip>
           </Box>

@@ -1,9 +1,9 @@
-import {
-  DirectionsRounded,
-  LanguageRounded,
-  MultipleStopRounded,
-} from '@mui/icons-material'
 import { Box, Paper, Stack, Typography } from '@mui/material'
+import {
+  FlowArrowIcon,
+  GlobeIcon,
+  NavigationArrowIcon,
+} from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -72,9 +72,9 @@ export const ClashModeCard = () => {
   // 模式图标映射
   const modeIcons = useMemo(
     () => ({
-      rule: <MultipleStopRounded fontSize="small" />,
-      global: <LanguageRounded fontSize="small" />,
-      direct: <DirectionsRounded fontSize="small" />,
+      rule: <FlowArrowIcon size={20} />,
+      global: <GlobeIcon size={20} />,
+      direct: <NavigationArrowIcon size={20} />,
     }),
     [],
   )

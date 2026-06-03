@@ -43,6 +43,15 @@ body {
   background-color: transparent;
 }
 
+.MuiSvgIcon-root {
+  user-select: none;
+  display: inline-block;
+  fill: currentColor;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
 body {
   overflow: hidden;
 }

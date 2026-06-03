@@ -16,14 +16,6 @@ import {
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import {
-  ArrowDownward,
-  Delete as DeleteIcon,
-  DragIndicator,
-  Link,
-  LinkOff,
-  WarningRounded,
-} from '@mui/icons-material'
-import {
   Alert,
   Box,
   Button,
@@ -33,6 +25,14 @@ import {
   Typography,
   useTheme,
 } from '@mui/material'
+import {
+  ArrowDownIcon,
+  DotsSixVerticalIcon,
+  LinkBreakIcon,
+  LinkIcon,
+  TrashIcon,
+  WarningIcon,
+} from '@phosphor-icons/react'
 import yaml from 'js-yaml'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -163,7 +163,7 @@ const SortableItem = ({
           },
         }}
       >
-        <DragIndicator />
+        <DotsSixVerticalIcon />
       </Box>
 
       {roleLabel ? (
@@ -237,7 +237,7 @@ const SortableItem = ({
           },
         }}
       >
-        <DeleteIcon fontSize="small" />
+        <TrashIcon size={20} />
       </IconButton>
     </Box>
   )
@@ -506,7 +506,7 @@ export const ProxyChain = ({
           <Typography variant="h6">{t('proxies.page.chain.header')}</Typography>
           <TooltipIcon
             title={chainWarning}
-            icon={WarningRounded}
+            icon={WarningIcon}
             color="warning"
             sx={{ p: 0.25 }}
           />
@@ -532,13 +532,13 @@ export const ProxyChain = ({
                 t('proxies.page.actions.clearChainConfig') || '删除链式配置'
               }
             >
-              <DeleteIcon fontSize="small" />
+              <TrashIcon size={20} />
             </IconButton>
           )}
           <Button
             size="small"
             variant="contained"
-            startIcon={isConnected ? <LinkOff /> : <Link />}
+            startIcon={isConnected ? <LinkBreakIcon /> : <LinkIcon />}
             onClick={handleConnect}
             disabled={
               isConnecting ||
@@ -625,7 +625,9 @@ export const ProxyChain = ({
                           py: 0.25,
                         }}
                       >
-                        <ArrowDownward
+                        <Box
+                          component={ArrowDownIcon}
+                          className="MuiSvgIcon-root"
                           sx={{
                             fontSize: 20,
                             color: theme.palette.primary.main,

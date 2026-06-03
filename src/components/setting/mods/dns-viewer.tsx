@@ -1,4 +1,3 @@
-import { RestartAltRounded } from '@mui/icons-material'
 import {
   Box,
   Button,
@@ -12,6 +11,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
+import { ArrowCounterClockwiseIcon } from '@phosphor-icons/react'
 import { invoke } from '@tauri-apps/api/core'
 import { useLockFn } from 'ahooks'
 import yaml from 'js-yaml'
@@ -639,7 +639,7 @@ export function DnsViewer({ ref }: { ref?: Ref<DialogRef> }) {
               variant="outlined"
               size="small"
               color="warning"
-              startIcon={<RestartAltRounded />}
+              startIcon={<ArrowCounterClockwiseIcon />}
               onClick={resetToDefaults}
             >
               {t('shared.actions.resetToDefault')}

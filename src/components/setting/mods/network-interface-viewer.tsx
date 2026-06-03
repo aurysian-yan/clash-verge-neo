@@ -1,5 +1,5 @@
-import { ContentCopyRounded } from '@mui/icons-material'
 import { alpha, Box, Button, CircularProgress, IconButton } from '@mui/material'
+import { CopyIcon } from '@phosphor-icons/react'
 import { writeText } from '@tauri-apps/plugin-clipboard-manager'
 import type { Ref } from 'react'
 import { useImperativeHandle, useState } from 'react'
@@ -126,7 +126,11 @@ const AddressDisplay = ({
             )
           }}
         >
-          <ContentCopyRounded sx={{ fontSize: '18px' }} />
+          <Box
+            component={CopyIcon}
+            className="MuiSvgIcon-root"
+            sx={{ fontSize: '18px' }}
+          />
         </IconButton>
       </Box>
     </Box>

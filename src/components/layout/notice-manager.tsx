@@ -1,4 +1,3 @@
-import { CloseRounded } from '@mui/icons-material'
 import {
   Snackbar,
   Alert,
@@ -6,6 +5,7 @@ import {
   Box,
   type SnackbarOrigin,
 } from '@mui/material'
+import { XIcon } from '@phosphor-icons/react'
 import React, { useCallback, useMemo, useSyncExternalStore } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -207,7 +207,7 @@ export const NoticeManager: React.FC<NoticeManagerProps> = ({ position }) => {
                 color="inherit"
                 onClick={() => handleClose(notice.id)}
               >
-                <CloseRounded fontSize="inherit" />
+                <XIcon size="1em" />
               </IconButton>
             }
           >

@@ -1,10 +1,6 @@
-import {
-  ArrowDownwardRounded,
-  ArrowUpwardRounded,
-  MemoryRounded,
-} from '@mui/icons-material'
 import { Box, Typography } from '@mui/material'
-import type { BoxProps, SvgIconProps, TypographyProps } from '@mui/material'
+import type { BoxProps, TypographyProps } from '@mui/material'
+import { ArrowDownIcon, ArrowUpIcon, MemoryIcon } from '@phosphor-icons/react'
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -60,7 +56,7 @@ export const LayoutTraffic = () => {
       whiteSpace: 'nowrap',
     },
   }
-  const iconStyle: Pick<SvgIconProps, 'sx'> = {
+  const iconStyle: Pick<BoxProps, 'sx'> = {
     sx: { mr: '8px', fontSize: 16 },
   }
   const valStyle: Pick<TypographyProps, 'component' | 'sx'> = {
@@ -99,9 +95,15 @@ export const LayoutTraffic = () => {
               // opacity: traffic?.is_fresh ? 1 : 0.6,
             }}
           >
-            <ArrowUpwardRounded
+            <Box
+              component={ArrowUpIcon}
+              className="MuiSvgIcon-root"
               {...iconStyle}
-              color={(traffic?.up || 0) > 0 ? 'secondary' : 'disabled'}
+              sx={{
+                ...iconStyle.sx,
+                color:
+                  (traffic?.up || 0) > 0 ? 'secondary.main' : 'action.disabled',
+              }}
             />
             <Typography {...valStyle} color="secondary">
               {up}
@@ -117,9 +119,15 @@ export const LayoutTraffic = () => {
               // opacity: traffic?.is_fresh ? 1 : 0.6,
             }}
           >
-            <ArrowDownwardRounded
+            <Box
+              component={ArrowDownIcon}
+              className="MuiSvgIcon-root"
               {...iconStyle}
-              color={(traffic?.down || 0) > 0 ? 'primary' : 'disabled'}
+              sx={{
+                ...iconStyle.sx,
+                color:
+                  (traffic?.down || 0) > 0 ? 'primary.main' : 'action.disabled',
+              }}
             />
             <Typography {...valStyle} color="primary">
               {down}
@@ -141,7 +149,11 @@ export const LayoutTraffic = () => {
                 // isDebug && (await gc());
               }}
             >
-              <MemoryRounded {...iconStyle} />
+              <Box
+                component={MemoryIcon}
+                className="MuiSvgIcon-root"
+                {...iconStyle}
+              />
               <Typography {...valStyle}>{inuse}</Typography>
               <Typography {...unitStyle}>{inuseUnit}</Typography>
             </Box>

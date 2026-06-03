@@ -1,4 +1,3 @@
-import { CloseRounded } from '@mui/icons-material'
 import {
   styled,
   ListItem,
@@ -7,6 +6,7 @@ import {
   Box,
   alpha,
 } from '@mui/material'
+import { XIcon } from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
@@ -53,7 +53,7 @@ export const ConnectionItem = (props: Props) => {
             title={t('connections.components.actions.closeConnection')}
             aria-label={t('connections.components.actions.closeConnection')}
           >
-            <CloseRounded />
+            <XIcon />
           </IconButton>
         )
       }

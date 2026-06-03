@@ -3,17 +3,106 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  > header {
-    flex: 0 0 58px;
+
+  >header {
+    flex: 0 0 52px;
     width: 100%;
     // max-width: 850px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 6px 0 14px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid var(--divider-color);
+
+    >p {
+      font-size: 16px;
+    }
+
+    .base-page-header-actions {
+      display: flex;
+      align-items: center;
+      box-shadow: -0.25px -0.25px 0.25px 0 rgba(255, 255, 255, 0.15) inset, -0.5px -0.5px 0.5px 0 rgba(255, 255, 255, 0.15) inset, 0.25px 0.25px 0.25px 0 rgba(255, 255, 255, 0.15) inset, 0.5px 0.5px 0.5px 0 rgba(255, 255, 255, 0.15) inset !important;
+      background-color: color-mix(in srgb, var(--text-color) 5%, transparent) !important;
+      height: 36px !important;
+      padding: 1px 4px;
+      border-radius: 999px;
+      width: fit-content;
+      gap: 4px;
+    }
+
+    .base-page-header-actions .MuiButtonBase-root {
+      border-radius: 999px !important;
+      border-color: transparent !important;
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .base-page-header-actions .MuiButtonBase-root:hover {
+      background-color: color-mix(in srgb, var(--text-color) 7%, transparent) !important;
+    }
+
+    .base-page-header-actions .MuiButtonBase-root:active {
+      background-color: color-mix(in srgb, var(--text-color) 12%, transparent) !important;
+    }
+
+    .base-page-header-actions .MuiButton-root {
+      border-color: transparent !important;
+      color: inherit;
+    }
+
+    .base-page-header-actions .MuiButtonGroup-grouped {
+      border-color: transparent !important;
+    }
+
+    .base-page-header-actions .MuiButton-containedPrimary,
+    .base-page-header-actions .MuiButton-outlinedPrimary,
+    .base-page-header-actions .MuiIconButton-colorPrimary {
+      color: inherit !important;
+    }
+
+    div[role="group"]:has(.base-page-header-tab-active) {
+      gap: 2px;
+    }
+
+    .base-page-header-actions .base-page-header-tab-active {
+      background-color: color-mix(in srgb, var(--text-color) 10%, transparent) !important;
+    }
+
+    .base-page-header-actions--single,
+    .base-page-header-actions:has(> .MuiButtonBase-root:only-child) {
+      min-width: 42px;
+      min-height: 38px;
+      height: 38px !important;
+      padding: 0;
+      gap: 0;
+
+      > .MuiButtonBase-root {
+        width: 100% !important;
+        min-width: 42px;
+        height: 100% !important;
+        border-radius: inherit;
+      }
+    }
+
+    .MuiIconButton-root.MuiButtonBase-root {
+      height: 32px !important;
+      width: 32px !important;
+      > svg {
+        max-height: 22px;
+      }
+    }
+
+    .base-page-header-actions--single > .MuiButtonBase-root,
+    .base-page-header-actions:has(> .MuiButtonBase-root:only-child)
+      > .MuiButtonBase-root {
+      width: 100% !important;
+      min-width: 42px;
+      height: 100% !important;
+      border-radius: inherit;
+    }
+
   }
 
   .base-container {
@@ -22,7 +111,7 @@
     // border-radius: 10px;
     // border-top-left-radius: var(--border-radius);
 
-    > section {
+    >section {
       position: relative;
       flex: 1 1 100%;
       width: 100%;
@@ -31,6 +120,7 @@
       padding: 10px 0;
       box-sizing: border-box;
       scrollbar-gutter: stable;
+
       .base-content {
         width: calc(100% - 10px * 2);
         margin: 0 auto;
@@ -38,9 +128,10 @@
     }
 
     &.no-padding {
-      > section {
+      >section {
         padding: 0;
         overflow: visible;
+
         .base-content {
           width: 100%;
         }

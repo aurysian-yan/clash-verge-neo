@@ -17,7 +17,7 @@ import { useAppRefreshers, useRulesData } from '@/providers/app-data-context'
 
 const RulesPage = () => {
   const { t } = useTranslation()
-  const { rules = [] } = useRulesData()
+  const { rules = [], ruleProviders } = useRulesData()
   const { refreshRules, refreshRuleProviders } = useAppRefreshers()
   const [match, setMatch] = useState(() => (_: string) => true)
   const virtuosoRef = useRef<VirtualListHandle>(null)
@@ -64,9 +64,14 @@ const RulesPage = () => {
         overflow: 'auto',
       }}
       header={
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <ProviderButton />
-        </Box>
+        Object.keys(ruleProviders || {}).length > 0 ? (
+          <Box
+            className="base-page-header-actions base-page-header-actions--single"
+            sx={{ display: 'flex', alignItems: 'center' }}
+          >
+            <ProviderButton />
+          </Box>
+        ) : undefined
       }
     >
       <Box

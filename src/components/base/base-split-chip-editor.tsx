@@ -1,4 +1,3 @@
-import { CodeRounded, ViewModuleRounded } from '@mui/icons-material'
 import {
   Box,
   Button,
@@ -9,6 +8,7 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material'
+import { CodeIcon, SquaresFourIcon } from '@phosphor-icons/react'
 import type { ReactNode } from 'react'
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -109,7 +109,7 @@ export const BaseSplitChipEditor = ({
   const nextMode = mode === 'visual' ? 'advanced' : 'visual'
   const toggleLabel =
     nextMode === 'visual' ? resolvedLabels.visual : resolvedLabels.advanced
-  const ToggleIcon = nextMode === 'visual' ? ViewModuleRounded : CodeRounded
+  const ToggleIcon = nextMode === 'visual' ? SquaresFourIcon : CodeIcon
   const resolvedAriaLabel =
     ariaLabel ?? (typeof toggleLabel === 'string' ? toggleLabel : undefined)
 
@@ -125,7 +125,7 @@ export const BaseSplitChipEditor = ({
           }
         }}
       >
-        <ToggleIcon fontSize="small" />
+        <ToggleIcon size={20} />
       </IconButton>
     </Tooltip>
   ) : null

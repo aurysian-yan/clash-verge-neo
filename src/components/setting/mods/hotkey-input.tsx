@@ -1,5 +1,5 @@
-import { DeleteRounded } from '@mui/icons-material'
 import { alpha, Box, IconButton, styled } from '@mui/material'
+import { TrashIcon } from '@phosphor-icons/react'
 import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -109,7 +109,7 @@ export const HotkeyInput = (props: Props) => {
           setKeys([])
         }}
       >
-        <DeleteRounded fontSize="inherit" />
+        <TrashIcon size="1em" />
       </IconButton>
     </Box>
   )

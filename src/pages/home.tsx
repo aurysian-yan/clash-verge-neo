@@ -1,12 +1,4 @@
 import {
-  DnsOutlined,
-  HelpOutlineRounded,
-  HistoryEduOutlined,
-  RouterOutlined,
-  SettingsOutlined,
-  SpeedOutlined,
-} from '@mui/icons-material'
-import {
   Box,
   Button,
   Checkbox,
@@ -21,6 +13,14 @@ import {
   Skeleton,
   Tooltip,
 } from '@mui/material'
+import {
+  DatabaseIcon,
+  GaugeIcon,
+  GearIcon,
+  NotePencilIcon,
+  QuestionIcon,
+  WifiHighIcon,
+} from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import { Suspense, lazy, useCallback, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -324,7 +324,7 @@ const HomePage = () => {
         'traffic',
         <EnhancedCard
           title={t('home.page.cards.trafficStats')}
-          icon={<SpeedOutlined />}
+          icon={<GaugeIcon />}
           iconColor="secondary"
         >
           <EnhancedTrafficStats />
@@ -367,24 +367,27 @@ const HomePage = () => {
       title={t('home.page.title')}
       contentStyle={{ padding: 2 }}
       header={
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box
+          className="base-page-header-actions"
+          sx={{ display: 'flex', alignItems: 'center' }}
+        >
           <Tooltip title={t('home.page.tooltips.lightweightMode')} arrow>
             <IconButton
               onClick={async () => await entry_lightweight_mode()}
               size="small"
               color="inherit"
             >
-              <HistoryEduOutlined />
+              <NotePencilIcon />
             </IconButton>
           </Tooltip>
           <Tooltip title={t('home.page.tooltips.manual')} arrow>
             <IconButton onClick={toGithubDoc} size="small" color="inherit">
-              <HelpOutlineRounded />
+              <QuestionIcon />
             </IconButton>
           </Tooltip>
           <Tooltip title={t('home.page.tooltips.settings')} arrow>
             <IconButton onClick={openSettings} size="small" color="inherit">
-              <SettingsOutlined />
+              <GearIcon />
             </IconButton>
           </Tooltip>
         </Box>
@@ -414,7 +417,7 @@ const NetworkSettingsCard = () => {
   return (
     <EnhancedCard
       title={t('home.page.cards.networkSettings')}
-      icon={<DnsOutlined />}
+      icon={<DatabaseIcon />}
       iconColor="primary"
       action={null}
     >
@@ -429,7 +432,7 @@ const ClashModeEnhancedCard = () => {
   return (
     <EnhancedCard
       title={t('home.page.cards.proxyMode')}
-      icon={<RouterOutlined />}
+      icon={<WifiHighIcon />}
       iconColor="info"
       action={null}
     >

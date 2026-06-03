@@ -1,5 +1,5 @@
-import { ContentCopyRounded } from '@mui/icons-material'
 import { Button, Input, MenuItem, Select } from '@mui/material'
+import { CopyIcon } from '@phosphor-icons/react'
 import { open } from '@tauri-apps/plugin-dialog'
 import { useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -155,9 +155,7 @@ const SettingVergeBasic = ({ onError }: Props) => {
 
       <SettingItem
         label={t('settings.components.verge.basic.fields.copyEnvType')}
-        extra={
-          <TooltipIcon icon={ContentCopyRounded} onClick={onCopyClashEnv} />
-        }
+        extra={<TooltipIcon icon={CopyIcon} onClick={onCopyClashEnv} />}
       >
         <GuardState
           value={env_type ?? (OS === 'windows' ? 'powershell' : 'bash')}

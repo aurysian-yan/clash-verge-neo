@@ -1,5 +1,5 @@
-import { ContentCopyRounded } from '@mui/icons-material'
 import { Typography } from '@mui/material'
+import { CopyIcon } from '@phosphor-icons/react'
 import { useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -151,19 +151,14 @@ const SettingVergeAdvanced = ({ onError: _ }: Props) => {
 
       <SettingItem
         label={t('settings.components.verge.advanced.fields.exportDiagnostics')}
-        extra={
-          <TooltipIcon
-            icon={ContentCopyRounded}
-            onClick={onExportDiagnosticInfo}
-          />
-        }
+        extra={<TooltipIcon icon={CopyIcon} onClick={onExportDiagnosticInfo} />}
       ></SettingItem>
 
       <SettingItem
         label={t('settings.components.verge.advanced.fields.vergeVersion')}
         extra={
           <TooltipIcon
-            icon={ContentCopyRounded}
+            icon={CopyIcon}
             onClick={copyVersion}
             title={t('settings.components.verge.advanced.actions.copyVersion')}
           />

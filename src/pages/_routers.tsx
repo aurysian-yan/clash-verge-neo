@@ -1,11 +1,13 @@
-import DnsRoundedIcon from '@mui/icons-material/DnsRounded'
-import ForkRightRoundedIcon from '@mui/icons-material/ForkRightRounded'
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
-import LanguageRoundedIcon from '@mui/icons-material/LanguageRounded'
-import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded'
-import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded'
-import SubjectRoundedIcon from '@mui/icons-material/SubjectRounded'
-import WifiRoundedIcon from '@mui/icons-material/WifiRounded'
+import {
+  ArticleIcon,
+  DatabaseIcon,
+  GearIcon,
+  GitForkIcon,
+  GlobeIcon,
+  HouseIcon,
+  LockOpenIcon,
+  WifiHighIcon,
+} from '@phosphor-icons/react'
 import { createBrowserRouter, RouteObject } from 'react-router'
 
 import ConnectionsSvg from '@/assets/image/itemicon/connections.svg?react'
@@ -30,49 +32,49 @@ export const navItems = [
   {
     label: 'layout.components.navigation.tabs.home',
     path: '/',
-    icon: [<HomeRoundedIcon key="mui" />, <HomeSvg key="svg" />],
+    icon: [<HouseIcon key="mui" />, <HomeSvg key="svg" />],
     Component: HomePage,
   },
   {
     label: 'layout.components.navigation.tabs.proxies',
     path: '/proxies',
-    icon: [<WifiRoundedIcon key="mui" />, <ProxiesSvg key="svg" />],
+    icon: [<WifiHighIcon key="mui" />, <ProxiesSvg key="svg" />],
     Component: ProxiesPage,
   },
   {
     label: 'layout.components.navigation.tabs.profiles',
     path: '/profile',
-    icon: [<DnsRoundedIcon key="mui" />, <ProfilesSvg key="svg" />],
+    icon: [<DatabaseIcon key="mui" />, <ProfilesSvg key="svg" />],
     Component: ProfilesPage,
   },
   {
     label: 'layout.components.navigation.tabs.connections',
     path: '/connections',
-    icon: [<LanguageRoundedIcon key="mui" />, <ConnectionsSvg key="svg" />],
+    icon: [<GlobeIcon key="mui" />, <ConnectionsSvg key="svg" />],
     Component: ConnectionsPage,
   },
   {
     label: 'layout.components.navigation.tabs.rules',
     path: '/rules',
-    icon: [<ForkRightRoundedIcon key="mui" />, <RulesSvg key="svg" />],
+    icon: [<GitForkIcon key="mui" />, <RulesSvg key="svg" />],
     Component: RulesPage,
   },
   {
     label: 'layout.components.navigation.tabs.logs',
     path: '/logs',
-    icon: [<SubjectRoundedIcon key="mui" />, <LogsSvg key="svg" />],
+    icon: [<ArticleIcon key="mui" />, <LogsSvg key="svg" />],
     Component: () => null /* KeepAlive: real LogsPage rendered in Layout */,
   },
   {
     label: 'layout.components.navigation.tabs.unlock',
     path: '/unlock',
-    icon: [<LockOpenRoundedIcon key="mui" />, <UnlockSvg key="svg" />],
+    icon: [<LockOpenIcon key="mui" />, <UnlockSvg key="svg" />],
     Component: UnlockPage,
   },
   {
     label: 'layout.components.navigation.tabs.settings',
     path: '/settings',
-    icon: [<SettingsRoundedIcon key="mui" />, <SettingsSvg key="svg" />],
+    icon: [<GearIcon key="mui" />, <SettingsSvg key="svg" />],
     Component: SettingsPage,
   },
 ]

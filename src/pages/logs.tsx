@@ -1,9 +1,9 @@
-import {
-  PlayCircleOutlineRounded,
-  PauseCircleOutlineRounded,
-  SwapVertRounded,
-} from '@mui/icons-material'
 import { Box, Button, IconButton, MenuItem } from '@mui/material'
+import {
+  ArrowsDownUpIcon,
+  PauseCircleIcon,
+  PlayCircleIcon,
+} from '@phosphor-icons/react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -97,56 +97,64 @@ const LogPage = () => {
         overflow: 'auto',
       }}
       header={
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <IconButton
-            title={t(
-              enableLog ? 'shared.actions.pause' : 'shared.actions.resume',
-            )}
-            aria-label={t(
-              enableLog ? 'shared.actions.pause' : 'shared.actions.resume',
-            )}
-            size="small"
-            color="inherit"
-            onClick={handleToggleLog}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box
+            className="base-page-header-actions"
+            sx={{ display: 'flex', alignItems: 'center' }}
           >
-            {enableLog ? (
-              <PauseCircleOutlineRounded />
-            ) : (
-              <PlayCircleOutlineRounded />
-            )}
-          </IconButton>
-          <IconButton
-            title={t(
-              isDescending
-                ? 'logs.actions.showAscending'
-                : 'logs.actions.showDescending',
-            )}
-            aria-label={t(
-              isDescending
-                ? 'logs.actions.showAscending'
-                : 'logs.actions.showDescending',
-            )}
-            size="small"
-            color="inherit"
-            onClick={handleToggleOrder}
-          >
-            <SwapVertRounded
-              sx={{
-                transform: isDescending ? 'scaleY(-1)' : 'none',
-                transition: 'transform 0.2s ease',
-              }}
-            />
-          </IconButton>
+            <IconButton
+              title={t(
+                enableLog ? 'shared.actions.pause' : 'shared.actions.resume',
+              )}
+              aria-label={t(
+                enableLog ? 'shared.actions.pause' : 'shared.actions.resume',
+              )}
+              size="small"
+              color="inherit"
+              onClick={handleToggleLog}
+            >
+              {enableLog ? <PauseCircleIcon /> : <PlayCircleIcon />}
+            </IconButton>
+            <IconButton
+              title={t(
+                isDescending
+                  ? 'logs.actions.showAscending'
+                  : 'logs.actions.showDescending',
+              )}
+              aria-label={t(
+                isDescending
+                  ? 'logs.actions.showAscending'
+                  : 'logs.actions.showDescending',
+              )}
+              size="small"
+              color="inherit"
+              onClick={handleToggleOrder}
+            >
+              <Box
+                component={ArrowsDownUpIcon}
+                className="MuiSvgIcon-root"
+                sx={{
+                  transform: isDescending ? 'scaleY(-1)' : 'none',
+                  transition: 'transform 0.2s ease',
+                }}
+              />
+            </IconButton>
+          </Box>
 
-          <Button
-            size="small"
-            variant="contained"
-            onClick={() => {
-              refreshGetClashLog(true)
-            }}
+          <Box
+            className="base-page-header-actions base-page-header-actions--single"
+            sx={{ display: 'flex', alignItems: 'center' }}
           >
-            {t('shared.actions.clear')}
-          </Button>
+            <Button
+              size="small"
+              variant="contained"
+              onClick={() => {
+                refreshGetClashLog(true)
+              }}
+            >
+              {t('shared.actions.clear')}
+            </Button>
+          </Box>
         </Box>
       }
     >

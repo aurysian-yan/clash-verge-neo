@@ -1,7 +1,8 @@
 use dark_light::{Mode as SystemTheme, detect as detect_system_theme};
 use tauri::utils::config::Color;
 use tauri::webview::PageLoadEvent;
-use tauri::{Theme, WebviewWindow};
+use tauri::{AppHandle, Theme, WebviewWindow};
+use tokio::sync::oneshot;
 
 use crate::{config::Config, core::handle, utils::resolve::window_script::build_window_initial_script};
 use clash_verge_logging::{Type, logging_error};
@@ -29,7 +30,7 @@ pub async fn build_new_window() -> Result<WebviewWindow, String> {
 
     let config = Config::verge().await;
     let latest = config.latest_arc();
-    let start_page = latest.start_page.as_deref().unwrap_or("/");
+    let start_page = latest.start_page.as_deref().unwrap_or("/").to_owned();
     let initial_theme_mode = match latest.theme_mode.as_deref() {
         Some("dark") => "dark",
         Some("light") => "light",
@@ -56,9 +57,34 @@ pub async fn build_new_window() -> Result<WebviewWindow, String> {
 
     let initial_script = build_window_initial_script(initial_theme_mode, DARK_BACKGROUND_HEX, LIGHT_BACKGROUND_HEX);
 
+    let app_handle_for_main_thread = app_handle.clone();
+    let (tx, rx) = oneshot::channel();
+    app_handle
+        .run_on_main_thread(move || {
+            let result = build_new_window_on_main_thread(
+                &app_handle_for_main_thread,
+                start_page,
+                resolved_theme,
+                background_color,
+                initial_script,
+            );
+            let _ = tx.send(result);
+        })
+        .map_err(|e| e.to_string())?;
+
+    rx.await.map_err(|_| "主线程窗口创建任务已取消".to_string())?
+}
+
+fn build_new_window_on_main_thread(
+    app_handle: &AppHandle,
+    start_page: String,
+    resolved_theme: Option<Theme>,
+    background_color: Color,
+    initial_script: String,
+) -> Result<WebviewWindow, String> {
     let mut builder = tauri::WebviewWindowBuilder::new(
         app_handle,
-        "main", /* the unique window label */
+        "main", /* 主窗口唯一标识 */
         tauri::WebviewUrl::App(start_page.into()),
     )
     .title("Clash Verge")

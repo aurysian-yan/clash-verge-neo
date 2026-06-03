@@ -1,6 +1,7 @@
 import './assets/styles/index.scss'
 
 import { ResizeObserver } from '@juggle/resize-observer'
+import { IconContext } from '@phosphor-icons/react'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { ComposeContextProvider } from 'foxact/compose-context-provider'
 import React from 'react'
@@ -49,17 +50,25 @@ const initializeApp = (initialThemeMode: 'light' | 'dark') => {
   const root = createRoot(container)
   root.render(
     <React.StrictMode>
-      <ComposeContextProvider contexts={contexts}>
-        <BaseErrorBoundary>
-          <QueryClientProvider client={queryClient}>
-            <WindowProvider>
-              <AppDataProvider>
-                <RouterProvider router={router} />
-              </AppDataProvider>
-            </WindowProvider>
-          </QueryClientProvider>
-        </BaseErrorBoundary>
-      </ComposeContextProvider>
+      <IconContext
+        value={{
+          className: 'MuiSvgIcon-root',
+          color: 'currentColor',
+          size: '1em',
+        }}
+      >
+        <ComposeContextProvider contexts={contexts}>
+          <BaseErrorBoundary>
+            <QueryClientProvider client={queryClient}>
+              <WindowProvider>
+                <AppDataProvider>
+                  <RouterProvider router={router} />
+                </AppDataProvider>
+              </WindowProvider>
+            </QueryClientProvider>
+          </BaseErrorBoundary>
+        </ComposeContextProvider>
+      </IconContext>
     </React.StrictMode>,
   )
 }

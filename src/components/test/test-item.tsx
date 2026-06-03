@@ -1,7 +1,7 @@
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { LanguageRounded } from '@mui/icons-material'
 import { Box, Divider, MenuItem, Menu, styled, alpha } from '@mui/material'
+import { GlobeIcon } from '@phosphor-icons/react'
 import { UnlistenFn } from '@tauri-apps/api/event'
 import { useLockFn } from 'ahooks'
 import { useCallback, useEffect, useState } from 'react'
@@ -141,7 +141,12 @@ export const TestItem = ({
             </Box>
           ) : (
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <LanguageRounded sx={{ height: '40px' }} fontSize="large" />
+              <Box
+                component={GlobeIcon}
+                className="MuiSvgIcon-root"
+                sx={{ height: '40px' }}
+                size={35}
+              />
             </Box>
           )}
 

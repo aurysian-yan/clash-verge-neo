@@ -9,10 +9,6 @@ import {
 } from '@dnd-kit/core'
 import { SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable'
 import {
-  VerticalAlignBottomRounded,
-  VerticalAlignTopRounded,
-} from '@mui/icons-material'
-import {
   Autocomplete,
   Box,
   Button,
@@ -27,6 +23,7 @@ import {
   TextField,
   styled,
 } from '@mui/material'
+import { ArrowLineDownIcon, ArrowLineUpIcon } from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import {
   cancelIdleCallback,
@@ -1052,7 +1049,7 @@ export const GroupsEditorViewer = (props: Props) => {
                 <Button
                   fullWidth
                   variant="contained"
-                  startIcon={<VerticalAlignTopRounded />}
+                  startIcon={<ArrowLineUpIcon />}
                   onClick={() => {
                     try {
                       validateGroup()
@@ -1076,7 +1073,7 @@ export const GroupsEditorViewer = (props: Props) => {
                 <Button
                   fullWidth
                   variant="contained"
-                  startIcon={<VerticalAlignBottomRounded />}
+                  startIcon={<ArrowLineDownIcon />}
                   onClick={() => {
                     try {
                       validateGroup()

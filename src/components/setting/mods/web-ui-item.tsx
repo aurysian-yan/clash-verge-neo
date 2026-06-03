@@ -1,17 +1,17 @@
 import {
-  CheckRounded,
-  CloseRounded,
-  DeleteRounded,
-  EditRounded,
-  OpenInNewRounded,
-} from '@mui/icons-material'
-import {
   Divider,
   IconButton,
   Stack,
   TextField,
   Typography,
 } from '@mui/material'
+import {
+  ArrowSquareOutIcon,
+  CheckIcon,
+  PencilSimpleIcon,
+  TrashIcon,
+  XIcon,
+} from '@phosphor-icons/react'
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -73,7 +73,7 @@ export const WebUIItem = (props: Props) => {
               setEditing(false)
             }}
           >
-            <CheckRounded fontSize="inherit" />
+            <CheckIcon size="1em" />
           </IconButton>
           <IconButton
             size="small"
@@ -84,7 +84,7 @@ export const WebUIItem = (props: Props) => {
               setEditing(false)
             }}
           >
-            <CloseRounded fontSize="inherit" />
+            <XIcon size="1em" />
           </IconButton>
         </Stack>
         <Divider />
@@ -135,7 +135,7 @@ export const WebUIItem = (props: Props) => {
           color="inherit"
           onClick={() => onOpenUrl?.(value)}
         >
-          <OpenInNewRounded fontSize="inherit" />
+          <ArrowSquareOutIcon size="1em" />
         </IconButton>
         <IconButton
           size="small"
@@ -146,7 +146,7 @@ export const WebUIItem = (props: Props) => {
             setEditValue(value)
           }}
         >
-          <EditRounded fontSize="inherit" />
+          <PencilSimpleIcon size="1em" />
         </IconButton>
         <IconButton
           size="small"
@@ -154,7 +154,7 @@ export const WebUIItem = (props: Props) => {
           color="inherit"
           onClick={onDelete}
         >
-          <DeleteRounded fontSize="inherit" />
+          <TrashIcon size="1em" />
         </IconButton>
       </Stack>
       <Divider />

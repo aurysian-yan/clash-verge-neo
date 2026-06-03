@@ -1,9 +1,4 @@
 import {
-  ExpandLessRounded,
-  ExpandMoreRounded,
-  InboxRounded,
-} from '@mui/icons-material'
-import {
   alpha,
   Box,
   ListItemText,
@@ -13,6 +8,7 @@ import {
   Chip,
   Tooltip,
 } from '@mui/material'
+import { CaretDownIcon, CaretUpIcon, TrayIcon } from '@phosphor-icons/react'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -154,7 +150,7 @@ export const ProxyRender = (props: RenderProps) => {
               }}
             />
           </Tooltip>
-          {headState?.open ? <ExpandLessRounded /> : <ExpandMoreRounded />}
+          {headState?.open ? <CaretUpIcon /> : <CaretDownIcon />}
         </Box>
       </ListItemButton>
     )
@@ -199,7 +195,11 @@ export const ProxyRender = (props: RenderProps) => {
           justifyContent: 'center',
         }}
       >
-        <InboxRounded sx={{ fontSize: '2.5em', color: 'inherit' }} />
+        <Box
+          component={TrayIcon}
+          className="MuiSvgIcon-root"
+          sx={{ fontSize: '2.5em', color: 'inherit' }}
+        />
         <Typography sx={{ color: 'inherit' }}>No Proxies</Typography>
       </Box>
     )

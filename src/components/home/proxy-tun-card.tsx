@@ -1,10 +1,4 @@
 import {
-  ComputerRounded,
-  TroubleshootRounded,
-  HelpOutlineRounded,
-  SvgIconComponent,
-} from '@mui/icons-material'
-import {
   Box,
   Typography,
   Stack,
@@ -14,6 +8,12 @@ import {
   useTheme,
   Fade,
 } from '@mui/material'
+import {
+  type Icon,
+  DesktopIcon,
+  MagnifyingGlassIcon,
+  QuestionIcon,
+} from '@phosphor-icons/react'
 import { useState, useMemo, memo, FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -28,7 +28,7 @@ const LOCAL_STORAGE_TAB_KEY = 'clash-verge-proxy-active-tab'
 interface TabButtonProps {
   isActive: boolean
   onClick: () => void
-  icon: SvgIconComponent
+  icon: Icon
   label: string
   hasIndicator?: boolean
 }
@@ -72,7 +72,7 @@ const TabButton: FC<TabButtonProps> = memo(
           : {},
       }}
     >
-      <Icon fontSize="small" />
+      <Icon size={20} />
       <Typography variant="body2" sx={{ fontWeight: isActive ? 600 : 400 }}>
         {label}
       </Typography>
@@ -125,7 +125,9 @@ const TabDescription: FC<TabDescriptionProps> = memo(
       >
         {description}
         <Tooltip title={tooltipTitle}>
-          <HelpOutlineRounded
+          <Box
+            component={QuestionIcon}
+            className="MuiSvgIcon-root"
             sx={{ fontSize: 14, opacity: 0.7, flexShrink: 0 }}
           />
         </Tooltip>
@@ -197,14 +199,14 @@ export const ProxyTunCard: FC = () => {
         <TabButton
           isActive={activeTab === 'system'}
           onClick={() => handleTabChange('system')}
-          icon={ComputerRounded}
+          icon={DesktopIcon}
           label={t('settings.sections.system.toggles.systemProxy')}
           hasIndicator={systemProxyConfigState}
         />
         <TabButton
           isActive={activeTab === 'tun'}
           onClick={() => handleTabChange('tun')}
-          icon={TroubleshootRounded}
+          icon={MagnifyingGlassIcon}
           label={t('settings.sections.system.toggles.tunMode')}
           hasIndicator={enable_tun_mode && isTunModeAvailable}
         />

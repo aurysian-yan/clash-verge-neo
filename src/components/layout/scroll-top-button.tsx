@@ -1,5 +1,5 @@
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { IconButton, Fade, SxProps, Theme } from '@mui/material'
+import { CaretUpIcon } from '@phosphor-icons/react'
 
 interface Props {
   onClick: () => void
@@ -30,7 +30,7 @@ export const ScrollTopButton = ({ onClick, show, sx }: Props) => {
           ...sx,
         }}
       >
-        <KeyboardArrowUpIcon />
+        <CaretUpIcon />
       </IconButton>
     </Fade>
   )

@@ -1,12 +1,12 @@
-import {
-  BuildRounded,
-  DeleteForeverRounded,
-  PauseCircleOutlineRounded,
-  PlayCircleOutlineRounded,
-  SettingsRounded,
-  WarningRounded,
-} from '@mui/icons-material'
 import { Box, Typography, alpha, useTheme } from '@mui/material'
+import {
+  GearIcon,
+  PauseCircleIcon,
+  PlayCircleIcon,
+  TrashIcon,
+  WarningIcon,
+  WrenchIcon,
+} from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import React, { useCallback, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -95,9 +95,17 @@ const SwitchRow = ({
     >
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         {active ? (
-          <PlayCircleOutlineRounded sx={{ color: 'success.main', mr: 1 }} />
+          <Box
+            component={PlayCircleIcon}
+            className="MuiSvgIcon-root"
+            sx={{ color: 'success.main', mr: 1 }}
+          />
         ) : (
-          <PauseCircleOutlineRounded sx={{ color: 'text.disabled', mr: 1 }} />
+          <Box
+            component={PauseCircleIcon}
+            className="MuiSvgIcon-root"
+            sx={{ color: 'text.disabled', mr: 1 }}
+          />
         )}
         <Typography
           variant="subtitle1"
@@ -107,7 +115,7 @@ const SwitchRow = ({
         </Typography>
         <TooltipIcon
           title={infoTitle}
-          icon={SettingsRounded}
+          icon={GearIcon}
           onClick={onInfoClick}
           sx={{ ml: 1 }}
         />
@@ -215,14 +223,14 @@ const ProxyControlSwitches = ({
                     title={t(
                       'settings.sections.proxyControl.tooltips.tunUnavailable',
                     )}
-                    icon={WarningRounded}
+                    icon={WarningIcon}
                     sx={{ color: 'warning.main', ml: 1 }}
                   />
                   <TooltipIcon
                     title={t(
                       'settings.sections.proxyControl.actions.installService',
                     )}
-                    icon={BuildRounded}
+                    icon={WrenchIcon}
                     color="primary"
                     onClick={onInstallService}
                     sx={{ ml: 1 }}
@@ -234,7 +242,7 @@ const ProxyControlSwitches = ({
                   title={t(
                     'settings.sections.proxyControl.actions.uninstallService',
                   )}
-                  icon={DeleteForeverRounded}
+                  icon={TrashIcon}
                   color="secondary"
                   onClick={onUninstallService}
                   sx={{ ml: 1 }}

@@ -17,7 +17,7 @@ use clash_verge_logging::logging_error;
 use tauri::tray::{MouseButton, MouseButtonState, TrayIcon, TrayIconBuilder, TrayIconEvent};
 use tauri_plugin_clash_verge_sysinfo::is_current_app_handle_admin;
 use tauri_plugin_mihomo::models::Proxies;
-use tokio::fs;
+use tokio::{fs, sync::oneshot};
 
 use super::handle;
 use anyhow::Result;
@@ -359,33 +359,46 @@ impl Tray {
         let verge = Config::verge().await.data_arc();
 
         let icon_bytes = TrayState::get_tray_icon(&verge).await.1;
-        let icon = tauri::image::Image::from_bytes(&icon_bytes)?;
-
-        #[cfg(target_os = "linux")]
-        let builder = TrayIconBuilder::with_id(TRAY_ID).icon(icon).icon_as_template(false);
 
         #[cfg(any(target_os = "macos", target_os = "windows"))]
         let show_menu_on_left_click = verge.tray_event.as_ref().is_some_and(|v| v == "tray_menu");
 
-        #[cfg(not(target_os = "linux"))]
-        let mut builder = TrayIconBuilder::with_id(TRAY_ID).icon(icon).icon_as_template(false);
         #[cfg(target_os = "macos")]
-        {
-            let is_monochrome = verge.tray_icon.as_ref().is_none_or(|v| v == "monochrome");
-            builder = builder.icon_as_template(is_monochrome);
-        }
+        let is_monochrome = verge.tray_icon.as_ref().is_none_or(|v| v == "monochrome");
 
-        #[cfg(any(target_os = "macos", target_os = "windows"))]
-        {
-            if !show_menu_on_left_click {
-                builder = builder.show_menu_on_left_click(false);
-            }
-        }
+        let app_handle_for_main_thread = app_handle.clone();
+        let (tx, rx) = oneshot::channel();
+        app_handle.run_on_main_thread(move || {
+            let result = (|| -> Result<()> {
+                let icon = tauri::image::Image::from_bytes(&icon_bytes)?;
 
-        let tray = builder.build(app_handle)?;
-        tray.on_tray_icon_event(on_tray_icon_event);
-        tray.on_menu_event(on_menu_event);
-        Ok(())
+                #[cfg(target_os = "linux")]
+                let builder = TrayIconBuilder::with_id(TRAY_ID).icon(icon).icon_as_template(false);
+
+                #[cfg(not(target_os = "linux"))]
+                let mut builder = TrayIconBuilder::with_id(TRAY_ID).icon(icon).icon_as_template(false);
+                #[cfg(target_os = "macos")]
+                {
+                    builder = builder.icon_as_template(is_monochrome);
+                }
+
+                #[cfg(any(target_os = "macos", target_os = "windows"))]
+                {
+                    if !show_menu_on_left_click {
+                        builder = builder.show_menu_on_left_click(false);
+                    }
+                }
+
+                let tray = builder.build(&app_handle_for_main_thread)?;
+                tray.on_tray_icon_event(on_tray_icon_event);
+                tray.on_menu_event(on_menu_event);
+                Ok(())
+            })();
+
+            let _ = tx.send(result);
+        })?;
+
+        rx.await.map_err(|_| anyhow::anyhow!("主线程托盘创建任务已取消"))?
     }
 
     fn should_handle_tray_click(&self) -> bool {

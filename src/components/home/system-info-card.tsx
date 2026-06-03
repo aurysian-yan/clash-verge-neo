@@ -1,11 +1,18 @@
 import {
-  InfoOutlined,
-  SettingsOutlined,
-  AdminPanelSettingsOutlined,
-  DnsOutlined,
-  ExtensionOutlined,
-} from '@mui/icons-material'
-import { Typography, Stack, Divider, Chip, IconButton } from '@mui/material'
+  Box,
+  Typography,
+  Stack,
+  Divider,
+  Chip,
+  IconButton,
+} from '@mui/material'
+import {
+  DatabaseIcon,
+  GearIcon,
+  InfoIcon,
+  PuzzlePieceIcon,
+  ShieldCheckIcon,
+} from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -144,35 +151,45 @@ export const SystemInfoCard = () => {
       if (!isSidecarMode) {
         return (
           <>
-            <AdminPanelSettingsOutlined
+            <Box
+              component={ShieldCheckIcon}
+              className="MuiSvgIcon-root"
               sx={{ color: 'primary.main', fontSize: 16 }}
-              titleAccess={t('home.components.systemInfo.badges.adminMode')}
+              aria-label={t('home.components.systemInfo.badges.adminMode')}
             />
-            <DnsOutlined
+            <Box
+              component={DatabaseIcon}
+              className="MuiSvgIcon-root"
               sx={{ color: 'success.main', fontSize: 16, ml: 0.5 }}
-              titleAccess={t('home.components.systemInfo.badges.serviceMode')}
+              aria-label={t('home.components.systemInfo.badges.serviceMode')}
             />
           </>
         )
       }
       return (
-        <AdminPanelSettingsOutlined
+        <Box
+          component={ShieldCheckIcon}
+          className="MuiSvgIcon-root"
           sx={{ color: 'primary.main', fontSize: 16 }}
-          titleAccess={t('home.components.systemInfo.badges.adminMode')}
+          aria-label={t('home.components.systemInfo.badges.adminMode')}
         />
       )
     } else if (isSidecarMode) {
       return (
-        <ExtensionOutlined
+        <Box
+          component={PuzzlePieceIcon}
+          className="MuiSvgIcon-root"
           sx={{ color: 'info.main', fontSize: 16 }}
-          titleAccess={t('home.components.systemInfo.badges.sidecarMode')}
+          aria-label={t('home.components.systemInfo.badges.sidecarMode')}
         />
       )
     } else {
       return (
-        <DnsOutlined
+        <Box
+          component={DatabaseIcon}
+          className="MuiSvgIcon-root"
           sx={{ color: 'success.main', fontSize: 16 }}
-          titleAccess={t('home.components.systemInfo.badges.serviceMode')}
+          aria-label={t('home.components.systemInfo.badges.serviceMode')}
         />
       )
     }
@@ -199,7 +216,7 @@ export const SystemInfoCard = () => {
   return (
     <EnhancedCard
       title={t('home.components.systemInfo.title')}
-      icon={<InfoOutlined />}
+      icon={<InfoIcon />}
       iconColor="error"
       action={
         <IconButton
@@ -207,7 +224,7 @@ export const SystemInfoCard = () => {
           onClick={goToSettings}
           title={t('home.components.systemInfo.actions.settings')}
         >
-          <SettingsOutlined fontSize="small" />
+          <GearIcon size={20} />
         </IconButton>
       }
     >

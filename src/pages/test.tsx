@@ -142,7 +142,10 @@ const TestPage = () => {
       full
       title={t('tests.page.title')}
       header={
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box
+          className="base-page-header-actions"
+          sx={{ display: 'flex', alignItems: 'center' }}
+        >
           <Button
             variant="contained"
             size="small"

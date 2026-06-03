@@ -8,7 +8,6 @@ import {
 } from '@dnd-kit/core'
 import { arrayMove, SortableContext, useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { DragIndicatorRounded } from '@mui/icons-material'
 import {
   Button,
   Checkbox,
@@ -21,6 +20,7 @@ import {
   ListItem,
   ListItemText,
 } from '@mui/material'
+import { DotsSixVerticalIcon } from '@phosphor-icons/react'
 import type { Column } from '@tanstack/react-table'
 import { useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -180,7 +180,7 @@ const SortableColumnItem = ({
         {...attributes}
         {...listeners}
       >
-        <DragIndicatorRounded fontSize="small" />
+        <DotsSixVerticalIcon size={20} />
       </IconButton>
     </ListItem>
   )

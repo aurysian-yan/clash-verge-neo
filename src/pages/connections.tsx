@@ -1,10 +1,4 @@
 import {
-  DeleteForeverRounded,
-  TableChartRounded,
-  TableRowsRounded,
-  ViewColumnRounded,
-} from '@mui/icons-material'
-import {
   Box,
   Button,
   ButtonGroup,
@@ -14,8 +8,16 @@ import {
   Tooltip,
   Zoom,
 } from '@mui/material'
+import {
+  ColumnsIcon,
+  DownloadSimpleIcon,
+  RowsIcon,
+  TableIcon,
+  TrashIcon,
+  UploadSimpleIcon,
+} from '@phosphor-icons/react'
 import { useLockFn } from 'ahooks'
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { closeAllConnections } from 'tauri-plugin-mihomo-api'
 
@@ -120,6 +122,53 @@ const ConnectionsPage = () => {
     setMatch(() => match)
   }, [])
 
+  const renderTrafficTotal = (
+    label: ReactNode,
+    value: string | string[],
+    icon: ReactNode,
+  ) => {
+    const displayValue = Array.isArray(value) ? value.join('') : value
+
+    return (
+      <Box
+        sx={{
+          minWidth: 82,
+          px: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 0.75,
+          lineHeight: 1,
+        }}
+      >
+        <Tooltip title={label}>
+          <Box
+            component="span"
+            sx={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'text.secondary',
+            }}
+          >
+            {icon}
+          </Box>
+        </Tooltip>
+        <Box
+          component="span"
+          sx={{
+            fontSize: 14,
+            fontWeight: 600,
+            color: 'text.primary',
+            fontVariantNumeric: 'tabular-nums',
+          }}
+        >
+          {displayValue}
+        </Box>
+      </Box>
+    )
+  }
+
   const hasTableData = filterConn.length > 0
 
   return (
@@ -139,37 +188,49 @@ const ConnectionsPage = () => {
         minHeight: 0,
       }}
       header={
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Box sx={{ mx: 1 }}>
-            {t('shared.labels.downloaded')}:{' '}
-            {parseTraffic(connections?.downloadTotal)}
-          </Box>
-          <Box sx={{ mx: 1 }}>
-            {t('shared.labels.uploaded')}:{' '}
-            {parseTraffic(connections?.uploadTotal)}
-          </Box>
-          <IconButton
-            color="inherit"
-            size="small"
-            onClick={() =>
-              setSetting((o) =>
-                o?.layout !== 'table'
-                  ? { ...o, layout: 'table' }
-                  : { ...o, layout: 'list' },
-              )
-            }
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box
+            className="base-page-header-actions"
+            sx={{ display: 'flex', alignItems: 'center' }}
           >
-            {isTableLayout ? (
-              <TableRowsRounded titleAccess={t('shared.actions.listView')} />
-            ) : (
-              <TableChartRounded titleAccess={t('shared.actions.tableView')} />
+            {renderTrafficTotal(
+              t('shared.labels.downloaded'),
+              parseTraffic(connections?.downloadTotal),
+              <DownloadSimpleIcon size={14} weight="fill" />,
             )}
-          </IconButton>
-          <Button size="small" variant="contained" onClick={onCloseAll}>
-            <span style={{ whiteSpace: 'nowrap' }}>
-              {t('shared.actions.closeAll')}
-            </span>
-          </Button>
+            {renderTrafficTotal(
+              t('shared.labels.uploaded'),
+              parseTraffic(connections?.uploadTotal),
+              <UploadSimpleIcon size={14} weight="fill" />,
+            )}
+          </Box>
+          <Box
+            className="base-page-header-actions"
+            sx={{ display: 'flex', alignItems: 'center' }}
+          >
+            <IconButton
+              color="inherit"
+              size="small"
+              onClick={() =>
+                setSetting((o) =>
+                  o?.layout !== 'table'
+                    ? { ...o, layout: 'table' }
+                    : { ...o, layout: 'list' },
+                )
+              }
+            >
+              {isTableLayout ? (
+                <RowsIcon aria-label={t('shared.actions.listView')} />
+              ) : (
+                <TableIcon aria-label={t('shared.actions.tableView')} />
+              )}
+            </IconButton>
+            <Button size="small" variant="contained" onClick={onCloseAll}>
+              <span style={{ whiteSpace: 'nowrap' }}>
+                {t('shared.actions.closeAll')}
+              </span>
+            </Button>
+          </Box>
         </Box>
       }
     >
@@ -238,7 +299,7 @@ const ConnectionsPage = () => {
               onClick={() => setIsColumnManagerOpen(true)}
               sx={{ flex: '0 0 auto' }}
             >
-              <ViewColumnRounded fontSize="small" />
+              <ColumnsIcon size={20} />
             </IconButton>
           </Tooltip>
         )}
@@ -295,7 +356,12 @@ const ConnectionsPage = () => {
           color="primary"
           onClick={() => clearClosedConnections()}
         >
-          <DeleteForeverRounded sx={{ mr: 1 }} fontSize="small" />
+          <Box
+            component={TrashIcon}
+            className="MuiSvgIcon-root"
+            sx={{ mr: 1 }}
+            size={20}
+          />
           {t('shared.actions.clear')}
         </Fab>
       </Zoom>
